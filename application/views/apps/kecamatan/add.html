@@ -1,0 +1,81 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{judul} Kecamatan</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update {disable_edit} tangan" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning tangan" href='{this_controller}'><i class="fa fa-arrow-left"></i> Kembali</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<div class="col-sm-12 col-lg-9 col-md-12">
+						<form action='{this_controller}proses/{id_kecamatan}' id='form1'  class="form-horizontal">
+
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Pilih Kabupaten<i class='req'>*</i></label>
+								<div class="col-md-9"><select id="kode_kabupaten" class='form-control' name="kode_kabupaten" data-parsley-required="true">{list_kabupaten}</select></div>
+							</div>
+
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">kd_kec<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{kd_kec}" id="kd_kec" data-parsley-required="true" class='form-control' name="kd_kec"></div>
+							</div>
+
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Kode Kecamatan <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{kode_kecamatan}" id="kode_kecamatan" class='form-control' name="kode_kecamatan" data-parsley-required="true"></div>
+							</div>
+
+                            <div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Kecamatan <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{kecamatan}" id="Kecamatan" class='form-control' name="kecamatan" data-parsley-required="true"></div>
+							</div>
+
+							<div class="form-group  no-margin {enable_edit_status_publish}">
+								<label class="col-md-3 control-label">Status <i class='req'>*</i></label>
+								<div class="col-md-9"><select id="status_publish" class='form-control' name="status_publish" data-parsley-required="true">{list_status_publish}</select></div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{imagemanager_config}
+
+<!-- 
+<script>
+function getState(val)
+{
+	$.ajax({
+	    type: "POST",
+	    url: "{this_controller}records",
+	    data:'country_id='+val,
+	    success: function(data)
+        {
+		    $("#state-list").html(data);
+	    }
+	});
+}
+
+function selectCountry(val)
+{
+$("#search-box").val(val);
+$("#suggesstion-box").hide();
+}
+</script>
+ -->

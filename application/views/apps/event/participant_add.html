@@ -1,0 +1,228 @@
+<h1 class="page-header">Peserta {page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{judul} Peserta {page_name}</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<?php if ($is_editable == 1) { // Member ?>
+								<a class="btn btn-primary insert update" id='save' data-back='{id_event}/participant'><i class="fa fa-save"></i> {proses}</a>
+							<?php } ?>
+							<?php if (group_id() == 4) { // Member ?>
+								<a class="btn btn-warning" href='javascript:history.back();'><i class="fa fa-arrow-left"></i> Back</a>
+							<?php } else { ?>
+								<a class="btn btn-warning" href='{this_controller}{id_event}/participant'><i class="fa fa-arrow-left"></i> Back</a>
+							<?php } ?>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<form action='{this_controller}participant_proses/{id}' id='form1' class="form-horizontal">
+						<div class="col-sm-12 col-lg-9 col-md-12">
+							<ul class="nav nav-pills">
+								<li class="active in"><a href="#nav-pills-tab-1" data-toggle="tab">Peserta</a></li>
+								<li class=""><a href="#nav-pills-tab-2" data-toggle="tab">Workshop</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="nav-pills-tab-1">
+									<input type="hidden" name="id_event" value="{id_event}">
+									<input type="hidden" name="email" value="{email}" id="email">
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">User <i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select class="form-control" id="id_auth_user" name="id_auth_user" data-parsley-required="true" data-parsley-errors-container="#error-id_auth_user" {disabled_user}>{list_user}</select>
+											<span id="error-id_auth_user"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Nama<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{fullname}" id="fullname" class='form-control' data-parsley-required="true"  name="fullname"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Jenis Kelamin<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<label class="radio-inline">
+												<input type="radio" name="gender" value="M" data-parsley-required="true" data-parsley-errors-container="#error-gender" {checked_male} disabled> Laki - laki
+											</label>
+											<label class="radio-inline">
+												<input type="radio" name="gender" value="F" {checked_female} disabled> Perempuan
+											</label>
+											<span id="error-gender"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Tanggal Lahir <i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" class="form-control" name="birthdate" id="birthdate" value='{birthdate}' data-parsley-required="true" disabled></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">No. Telepon</label>
+										<div class="col-md-9"><input type="text" value="{phone}" id="phone" class='form-control' name="phone"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Negara<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select data-parsley-required="true" name="kode_ref_negara" id="kode_ref_negara" data-parsley-errors-container="#error-kode_ref_negara">{list_negara}</select>
+											<span id="error-kode_ref_negara"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin indonesia_address hidden">
+										<label class="col-md-3 control-label">Provinsi<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select id="kode_ref_provinsi" name="kode_ref_provinsi" data-parsley-errors-container="#error-kode_ref_provinsi">{list_provinsi}</select>
+											<span id="error-kode_ref_provinsi"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin indonesia_address hidden">
+										<label class="col-md-3 control-label">Kota / Kabupaten<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select id="kode_ref_kabupaten" name="kode_ref_kabupaten" data-parsley-errors-container="#error-kode_ref_kabupaten"></select>
+											<span id="error-kode_ref_kabupaten"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin indonesia_address hidden">
+										<label class="col-md-3 control-label">Kecamatan<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select id="kode_ref_kecamatan" name="kode_ref_kecamatan" data-parsley-errors-container="#error-kode_ref_kecamatan"></select>
+											<span id="error-kode_ref_kecamatan"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin indonesia_address hidden">
+										<label class="col-md-3 control-label">Kelurahan<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select id="kode_ref_kelurahan" name="kode_ref_kelurahan" data-parsley-errors-container="#error-kode_ref_kelurahan"></select>
+											<span id="error-kode_ref_kelurahan"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Kode Pos<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" id="postal_code" class='form-control' name="postal_code" value="{postal_code}" data-parsley-required="true"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Alamat<i class='req'>*</i></label>
+										<div class="col-md-9"><textarea id="address" class='form-control' data-parsley-required="true"  name="address" rows="5">{address}</textarea> </div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Facebook</label>
+										<div class="col-md-9"><input type="text" value="{facebook}" id="facebook" class='form-control' name="facebook"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Instagram</label>
+										<div class="col-md-9"><input type="text" value="{instagram}" id="instagram" class='form-control' name="instagram"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Twitter</label>
+										<div class="col-md-9"><input type="text" value="{twitter}" id="twitter" class='form-control' name="twitter"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Website</label>
+										<div class="col-md-9"><input type="text" value="{website}" id="website" class='form-control' name="website"></div>
+									</div>
+									<div class="form-group  no-margin invis">
+										<label class="col-md-3 control-label">Early Bird ?</label>
+										<div class="col-md-9">
+											<input type="checkbox" id="is_early_bird" class='form-control' name="is_early_bird" {checked_is_early_bird} value="1">
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Harga Daftar Event (Rp.) <i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{sub_price}" id="sub_price" class='form-control sub_price number_format' name="sub_price" data-parsley-required="true" disabled></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Total Bayar (Rp.) <i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{total_price}" id="total_price" class='form-control number_format' name="total_price" data-parsley-required="true" disabled></div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-pills-tab-2">
+									{event_workshop}
+									<hr>
+									<div class="cloneInputDataWorkshop" id="entry2{workshop_num}">
+										<input type="hidden" name="id_ref_ep_workshop[{workshop_num}]" value='{id_ref_ep_workshop}'>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Workshop </label>
+											<div class="col-md-9">
+												<select class='form-control workshop_id_ref_event_workshop' name="data_ep_workshop[{workshop_num}][id_ref_event_workshop]">{list_event_workshop}</select>
+											</div>
+										</div>
+										<div class="form-group  no-margin invis">
+											<label class="col-md-3 control-label">Early Bird ?</label>
+											<div class="col-md-9">
+												<input type="checkbox" class='form-control workshop_is_early_bird' name="data_ep_workshop[{workshop_num}][is_early_bird]" value="1" {checked_workshop_is_early_bird}>
+											</div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Harga </label>
+											<div class="col-md-9"><input type="text" value="{workshop_price}" class='form-control number_format sub_price' name="data_ep_workshop[{workshop_num}][price]" disabled></div>
+										</div>
+							      		<div class="form-group no-margin {invis_del_workshop}">
+											<label class="col-md-3 control-label"></label>
+											<div class="col-md-9">
+												<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+							    	{/event_workshop}
+							    	<span id="workshop_additional_form"></span>
+									<div class="form-group no-margin">
+										<label class="col-md-2 control-label"></label>
+										<div class="col-md-6"><button type="button" class="btn btn-primary" id="btnAddWorkshop"><i class="fa fa-plus"></i> Tambah</button></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<span id="workshop_form_template" class="invis">
+	<hr>
+	<div class="cloneInputDataWorkshop" id="entry2__NO_IMG_IMAGE">
+		<input type="hidden" name="id_ref_ep_workshop[__NO_IMG_IMAGE]" value=''>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Workshop </label>
+			<div class="col-md-9">
+				<select class='form-control workshop_id_ref_event_workshop without-select2' name="data_ep_workshop[__NO_IMG_IMAGE][id_ref_event_workshop]">{list_template_event_workshop}</select>
+			</div>
+		</div>
+		<div class="form-group  no-margin invis">
+			<label class="col-md-3 control-label">Early Bird ?</label>
+			<div class="col-md-9">
+				<input type="checkbox" class='form-control workshop_is_early_bird' name="data_ep_workshop[__NO_IMG_IMAGE][is_early_bird]" value="1">
+			</div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Harga </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control number_format sub_price' name="data_ep_workshop[__NO_IMG_IMAGE][price]" disabled></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label"></label>
+			<div class="col-md-9">
+				<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</span>
+
+<script type="text/javascript">
+	var kode_provinsi  = '{kode_ref_provinsi}';
+	var kode_kabupaten = '{kode_ref_kabupaten}';
+	var kode_kecamatan = '{kode_ref_kecamatan}';
+	var kode_kelurahan = '{kode_ref_kelurahan}';
+	var is_edit        = '{id}';
+	var id_event       = '{id_event}';
+	var id_group       = {id_group};
+	var is_editable    = {is_editable};
+</script>

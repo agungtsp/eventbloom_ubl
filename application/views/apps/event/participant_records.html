@@ -1,0 +1,21 @@
+{data}
+	<tr>
+		<td class="center">{nomor}</td>
+		<td>{code}</td>
+		<td>{email}</td>
+		<td>{fullname}</td>
+		<td>{phone}</td>
+		<td>{negara}</td>
+		<td>{bank_name}</td>
+		<td>{status_payment}</td>
+		<td class="center">
+			<a href="{this_controller}{id_event}/participant/{idx}/payment" title="Konfirmasi Pembayaran" class="fa fa-credit-card tangan action-form-icon"></a>
+			<a href="{this_controller}{id_event}/participant/add/{idx}" title="Edit Data" class="fa fa-pencil-square-o tangan action-form-icon"></a>
+			<a title="Delete Data" class="fa fa-trash-o tangan hapus action-form-icon" id='{id}' data-url-rm='participant_del'></a>
+		</td>
+		
+	</tr>
+{/data}
+<tr class="footer">
+	<td colspan="10">{paging}</td>
+</tr>

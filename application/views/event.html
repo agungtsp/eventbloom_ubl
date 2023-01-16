@@ -1,0 +1,60 @@
+<section class="section-xs">
+	<div class="container">
+		<div class="row {is_search_event}">
+			<div class="col-md-12">
+				<div class="search-result bg-gray">
+					<h2 class="{is_search_event_by_name}">Results For "{search_event_name}"</h2>
+					<p class="{is_search_event_by_category}">Kategori: {search_event_category}</p>
+				</div>
+			</div>
+		</div>
+		{list_event}
+			<div class="row">
+				{data_event}
+					<div class="col-sm-12 col-lg-4">
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="thumb-content">
+									{list_event_image}
+										<a href="{base_url}event/detil/{event_uri_path}">
+											<img class="card-img-top img-fluid" src="{img_event}" alt="Card image cap">
+										</a>
+									{/list_event_image}
+								</div>
+								<div class="card-body">
+								    <h4 class="card-title"><a href="{base_url}event/detil/{event_uri_path}">{event_name}</a></h4>
+								    <ul class="list-inline product-meta">
+								    	<li class="list-inline-item">
+								    		<a href="{base_url}event/kategori/{event_category_uri_path}"><i class="fa fa-folder-open-o"></i>{event_category}</a>
+								    	</li>
+								    	<li class="list-inline-item pull-right">
+									    	<a href=""><i class="fa fa-map-marker">&nbsp;</i>{event_location_name}</a>
+								    	</li>
+								    </ul>
+								    <p class="card-text">{event_desc}</p>
+								    <div class="card-date">
+								    	<a href=""><i class="fa fa-calendar">&nbsp;</i>{event_date}</a>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{/data_event}
+			</div>
+		{/list_event}
+		<div class="pagination justify-content-center">
+			<nav aria-label="Page navigation example">
+				{pagination}
+			</nav>
+		</div>
+	</div>
+</section>
+<div class="wrap {is_empty_data}">
+	<div class="notfound-event">
+		<p>OOPS! - Event Tidak Di Temukan</p>
+		<img src="{base_url}asset/images/404.png"/>
+		<div class="back_to_home">
+			<p><a href="{base_url}">Kembali Halaman Utama </a></p>
+		</div>
+	</div>
+</div> 

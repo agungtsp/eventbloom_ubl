@@ -1,0 +1,109 @@
+.parsley-errors-list li {
+    font-size: 14px;
+    font-style: italic;
+    color: #ff0000;
+}
+.card-date a{
+    color: #888;
+    font-size: 12px;
+}
+.product-item .product-meta li{
+	margin-right: 0;
+}
+.category-description{
+	font-size: 12px;
+}
+.category-block .header .icon-bg-9 {
+    background: #4d9815;
+    box-shadow: 0 0 0px 4px rgba(78, 236, 142, 0.35);
+}
+.category-block .header .icon-bg-10 {
+    background: #b38706;
+    box-shadow: 0 0 0px 4px rgba(218, 160, 54, 0.35);
+}
+.main-nav .nav-item.active .nav-link{
+    color: #51c7e2;
+}
+a:focus, a:hover{
+    color: #51c7e2;
+}
+.login-button{
+    background-color: #51c7e2;
+}
+.list-event {
+    margin-bottom: 20px;
+}
+.title-desc {
+    color: #8c8c8c;
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+.media {
+    margin-top: 15px;
+}
+.media-left, .media-right, .media-body {
+    display: table-cell;
+    vertical-align: top;
+}
+.media-left, .media>.pull-left {
+    padding-right: 10px;
+}
+.notfound{
+    text-align: center;
+    margin-top: 20px;
+}
+.notfound p, .notfound-event p {
+    color: #272727;
+    font-size: 28px;
+    text-align: center;
+}
+.back_to_home{
+    margin: 40px 0;
+}
+.back_to_home{
+    text-decoration: underline;
+}
+.view-all-event{
+    text-align: center;
+    margin-top: 20px;
+}
+.hidden{
+    display: none;
+}
+.product-review .media-body{
+    padding: 10px 30px 0px 30px;
+}
+.section-50{
+    padding: 50px 0;
+}
+.page-search select option{
+    color: #000;
+}
+
+.pagination .page-item a {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.notfound-event{
+    margin-top: -50px;
+    text-align: center;
+}
+.section-xs{
+    padding: 50px 0;
+}
+.contact-form .form-control{
+    min-height: 50px;
+    height: initial;
+}
+.page-search .btn-primary {
+    color: #fff;
+    background-color: #d841bc;
+    border-color: #ba6dac;
+}

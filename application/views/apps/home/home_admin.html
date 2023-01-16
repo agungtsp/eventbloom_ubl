@@ -1,0 +1,95 @@
+<h1 class="page-header">Beranda</h1>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<div class="widget widget-stats bg-green">
+					<div class="stats-icon"><i class="fa fa-users"></i></div>
+					<div class="stats-info">
+						<h4>TOTAL MEMBER (PESERTA)</h4>
+						<p>{total_active_member_participant}</p>	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="widget widget-stats bg-blue">
+					<div class="stats-icon"><i class="fa fa-users"></i></div>
+					<div class="stats-info">
+						<h4>TOTAL MEMBER (EO)</h4>
+						<p>{total_active_member_eo}</p>	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="widget widget-stats bg-purple">
+					<div class="stats-icon"><i class="fa fa-calendar"></i></div>
+					<div class="stats-info">
+						<h4>TOTAL EVENT AKTIF</h4>
+						<p>{total_active_events}</p>	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="widget widget-stats bg-red">
+					<div class="stats-icon"><i class="fa fa-calendar"></i></div>
+					<div class="stats-info">
+						<h4>TOTAL EVENT TIDAK AKTIF</h4>
+						<p>{total_inactive_events}</p>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+                <div class="panel panel-inverse" data-sortable-id="flot-chart-3">
+                    <div class="panel-heading">
+                        <div class="panel-heading-btn">
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        </div>
+                        <h4 class="panel-title">Total Event Berdasarkan Kategori</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="bar-chart" class="height-sm"></div>
+                    </div>
+                </div>
+	        </div>
+		</div>
+    </div>
+</div>
+<script>
+    handleDashboardGritterNotification();
+
+	$(document).ready(function(){
+        var data = {total_event_category};
+        $.plot("#bar-chart", [ {data: data, color: purple} ], {
+            series: {
+                bars: {
+                    show: true,
+                    barWidth: 0.4,
+                    align: 'center',
+                    fill: true,
+                    fillColor: purple,
+                    zero: true
+                }
+            },
+            xaxis: {
+                mode: "categories",
+                tickColor: '#ddd',
+				tickLength: 0
+            },
+            grid: {
+                borderWidth: 0
+            }
+        });	
+    });
+</script>
+<style>
+.box{min-height:413px;border: 1px solid #BFBFBF}
+/*#calendar2{height: 100%px;}*/
+#popupCalendar{overflow-y: auto;width:96% !important;left: 0;height: 96%;left: 2% !important;}
+#popupCalendar.modal{margin-left: 0 !important;}
+</style>
+<link rel='stylesheet' href='{url_static_content}assets/css/fullcalendar/cupertino/jquery-ui.min.css' />
+<!--<link href='{url_static_content}assets/css/fullcalendar/fullcalendar.css' rel='stylesheet' />
+<script src='{url_static_content}assets/js/fullcalendar/fullcalendar.min.js'></script>-->

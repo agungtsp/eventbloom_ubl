@@ -1,0 +1,503 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{judul} {page_name}</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning" href='{this_controller}'><i class="fa fa-arrow-left"></i> Back</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<form action='{this_controller}proses/{id}' id='form1' class="form-horizontal">
+						<div class="col-sm-12 col-lg-9 col-md-12">
+							<ul class="nav nav-pills">
+								<li class="active in"><a href="#nav-pills-tab-1" data-toggle="tab">Event</a></li>
+								<li class=""><a href="#nav-pills-tab-4" data-toggle="tab">Pembicara</a></li>
+								<li class=""><a href="#nav-pills-tab-2" data-toggle="tab">Harga (Early Bird)</a></li>
+								<li class=""><a href="#nav-pills-tab-5" data-toggle="tab">Harga (Normal)</a></li>
+								<li class=""><a href="#nav-pills-tab-3" data-toggle="tab">Workshop</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="nav-pills-tab-1">
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Kategori Event<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select data-parsley-required="true" name="id_ref_event_category" data-parsley-errors-container="#error-id_ref_event_category">{list_event_category}</select>
+											<span id="error-id_ref_event_category"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Nama<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{name}" id="name_event" class='form-control' data-parsley-required="true"  name="name_event"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Page URL<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{uri_path}" id="uri_path" class='form-control' data-parsley-required="true"  name="uri_path"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Deskripsi<i class='req'>*</i></label>
+										<div class="col-md-9"><textarea id="description" class='form-control ckeditor' data-parsley-required="true"  name="description" rows="5">{description}</textarea> </div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Maks. Peserta<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" id="max_participant" class='form-control' name="max_participant" value="{max_participant}" data-parsley-required="true"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Tanggal Event<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<div class="row">
+												<div class="col-md-6">
+													<input type="text" value="{start_date}" id="start_date" class='form-control datepicker_custom' data-parsley-required="true"  name="start_date" placeholder="Dari" readonly>
+												</div>
+												<div class="col-md-6">
+													<input type="text" value="{end_date}" id="end_date" class='form-control datepicker_custom' data-parsley-required="true"  name="end_date" placeholder="Sampai" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Tanggal Penjualan Tiket<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<div class="row">
+												<div class="col-md-6">
+													<input type="text" value="{early_bird_start_date}" id="early_bird_start_date" class='form-control datepicker_custom' data-parsley-required="true"  name="early_bird_start_date" placeholder="Dari" readonly>
+												</div>
+												<div class="col-md-6">
+													<input type="text" value="{early_bird_end_date}" id="early_bird_end_date" class='form-control datepicker_custom' data-parsley-required="true"  name="early_bird_end_date" placeholder="Sampai" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Image</label>
+										<div class="col-md-9">
+											{list_images}
+												<div class="cloneInputEventImage" style="margin-bottom: 15px;">
+													{images}
+													<a class="del-event-image {invis_del_event_image}"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i></a>
+												</div>
+											{/list_images}
+									    	<span id="image_additional_form"></span>
+											<button type="button" id="btnAddEventImage" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Gambar</button>
+										</div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Nama Lokasi<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="text" value="{location_name}" id="location_name" class='form-control' data-parsley-required="true"  name="location_name"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Alamat<i class='req'>*</i></label>
+										<div class="col-md-9"><textarea id="address" class='form-control' data-parsley-required="true"  name="address" rows="5">{address}</textarea> </div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Lokasi Google Maps</label>
+										<div class="col-md-9"><input type="text" value="{gmaps_location}" id="geocomplete" class='form-control' name="gmaps_location" placeholder="Cari Lokasi..."></div>
+										<div class="col-md-3"></div>
+										<div class="col-md-9">
+											<style type="text/css">
+											.map_canvas { 
+												  width: 100%; 
+												  height: 300px; 
+												  margin: 10px 20px 10px 0;
+												}
+											</style>
+											<div id="map" name="map" class="map_canvas"></div>
+										</div>
+									</div>
+									<div class="form-group no-margin hidden">
+										<label class="col-md-3 control-label">Longitude</label>
+										<div class="col-md-9"><input type="text" value="{longitude}" id="longitude" class='form-control' name="longitude"></div>
+									</div>
+									<div class="form-group no-margin hidden">
+										<label class="col-md-3 control-label">Latitude</label>
+										<div class="col-md-9"><input type="text" value="{latitude}" id="latitude" class='form-control' name="latitude"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Private ?</label>
+										<div class="col-md-9">
+											<input type="checkbox" id="is_private" class='form-control' name="is_private" data-parsley-errors-container="#error-is_private" {checked_is_private} value="1">
+											<span id="error-is_private"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin {hidden_is_private}">
+										<label class="col-md-3 control-label">Password<i class='req'>*</i></label>
+										<div class="col-md-9"><input type="password" id="password" class='form-control' name="password" value={password}></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Facebook</label>
+										<div class="col-md-9"><input type="text" value="{facebook}" id="facebook" class='form-control' name="facebook"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Instagram</label>
+										<div class="col-md-9"><input type="text" value="{instagram}" id="instagram" class='form-control' name="instagram"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Twitter</label>
+										<div class="col-md-9"><input type="text" value="{twitter}" id="twitter" class='form-control' name="twitter"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Website</label>
+										<div class="col-md-9"><input type="text" value="{website}" id="website" class='form-control' name="website"></div>
+									</div>
+									<div class="form-group  no-margin">
+										<label class="col-md-3 control-label">Status Event<i class='req'>*</i></label>
+										<div class="col-md-9">
+											<select data-parsley-required="true" name="id_ref_event_status" data-parsley-errors-container="#error-id_ref_event_status">{list_event_status}</select>
+											<span id="error-id_ref_event_status"></span>
+										</div>
+									</div>
+									<div class="form-group  no-margin {show_is_featured}">
+										<label class="col-md-3 control-label"> Diutamakan ?</label>
+										<div class="col-md-9">
+											<input type="checkbox" id="is_featured" class='form-control' name="is_featured" data-parsley-errors-container="#error-is_featured" {checked_is_featured} value="1">
+											<span id="error-is_featured"></span>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-pills-tab-2">
+									{event_price_early_bird}
+									<hr>
+									<div class="cloneInputDataPricing" id="entry2{pricing_num}">
+										<input type="hidden" name="id_event_price[{pricing_num}]" value='{id_event_price}'>
+										<input type="hidden" name="data_pricing[{pricing_num}][is_early_bird]" value="1">
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Nama </label>
+											<div class="col-md-9"><input type="text" value="{pricing_name}" class='form-control' name="data_pricing[{pricing_num}][name]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Deskripsi </label>
+											<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_pricing[{pricing_num}][description]">{pricing_desc}</textarea></div>
+										</div>
+										<div class="form-group  no-margin">
+											<label class="col-md-3 control-label">Tanggal</label>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-6">
+														<input type="text" value="{pricing_start_date}" class='form-control datepicker_custom' name="data_pricing[{pricing_num}][start_date]" placeholder="Dari" readonly>
+													</div>
+													<div class="col-md-6">
+														<input type="text" value="{pricing_end_date}" class='form-control datepicker_custom' name="data_pricing[{pricing_num}][end_date]" placeholder="Sampai" readonly>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Min. Usia </label>
+											<div class="col-md-9"><input type="text" value="{pricing_min_age}" class='form-control' name="data_pricing[{pricing_num}][min_age]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Maks. Usia </label>
+											<div class="col-md-9"><input type="text" value="{pricing_max_age}" class='form-control' name="data_pricing[{pricing_num}][max_age]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Harga </label>
+											<div class="col-md-9"><input type="text" value="{pricing_price}" class='form-control number_format' name="data_pricing[{pricing_num}][price]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Image</label>
+											<div class="col-md-9">{pricing_image}</div>
+							      		</div>
+							      		<div class="form-group no-margin {invis_del_pricing}">
+											<label class="col-md-3 control-label"></label>
+											<div class="col-md-9">
+												<a class="del-data-pricing"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+							    	{/event_price_early_bird}
+							    	<span id="pricing_additional_form"></span>
+									<div class="form-group no-margin">
+										<label class="col-md-2 control-label"></label>
+										<div class="col-md-6"><button type="button" class="btn btn-primary btnAddPricing" data-is-early-bird='1'><i class="fa fa-plus"></i> Tambah</button></div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-pills-tab-5">
+									{event_price_normal}
+									<hr>
+									<div class="cloneInputDataPricing" id="entry2{pricing_num}">
+										<input type="hidden" name="id_event_price[{pricing_num}]" value='{id_event_price}'>
+										<input type="hidden" name="data_pricing[{pricing_num}][is_early_bird]" value="0">
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Nama </label>
+											<div class="col-md-9"><input type="text" value="{pricing_name}" class='form-control' name="data_pricing[{pricing_num}][name]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Deskripsi </label>
+											<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_pricing[{pricing_num}][description]">{pricing_desc}</textarea></div>
+										</div>
+										<div class="form-group  no-margin">
+											<label class="col-md-3 control-label">Tanggal</label>
+											<div class="col-md-9">
+												<div class="row">
+													<div class="col-md-6">
+														<input type="text" value="{pricing_start_date}" class='form-control datepicker_custom' name="data_pricing[{pricing_num}][start_date]" placeholder="Dari" readonly>
+													</div>
+													<div class="col-md-6">
+														<input type="text" value="{pricing_end_date}" class='form-control datepicker_custom' name="data_pricing[{pricing_num}][end_date]" placeholder="Sampai" readonly>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Min. Usia </label>
+											<div class="col-md-9"><input type="text" value="{pricing_min_age}" class='form-control' name="data_pricing[{pricing_num}][min_age]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Maks. Usia </label>
+											<div class="col-md-9"><input type="text" value="{pricing_max_age}" class='form-control' name="data_pricing[{pricing_num}][max_age]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Harga </label>
+											<div class="col-md-9"><input type="text" value="{pricing_price}" class='form-control number_format' name="data_pricing[{pricing_num}][price]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Image</label>
+											<div class="col-md-9">{pricing_image}</div>
+							      		</div>
+							      		<div class="form-group no-margin {invis_del_pricing}">
+											<label class="col-md-3 control-label"></label>
+											<div class="col-md-9">
+												<a class="del-data-pricing"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+							    	{/event_price_normal}
+							    	<span id="pricing_normal_additional_form"></span>
+									<div class="form-group no-margin">
+										<label class="col-md-2 control-label"></label>
+										<div class="col-md-6"><button type="button" class="btn btn-primary btnAddPricing" data-is-early-bird='0'><i class="fa fa-plus"></i> Tambah</button></div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-pills-tab-3">
+									{event_workshop}
+									<hr>
+									<div class="cloneInputDataWorkshop" id="entry2{workshop_num}">
+										<input type="hidden" name="id_ref_event_workshop[{workshop_num}]" value='{id_ref_event_workshop}'>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Nama </label>
+											<div class="col-md-9"><input type="text" value="{workshop_name}" class='form-control' name="data_workshop[{workshop_num}][name]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Maks. Peserta </label>
+											<div class="col-md-9"><input type="text" value="{workshop_max_participant}" class='form-control' name="data_workshop[{workshop_num}][max_participant]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Harga (Early Bird)</label>
+											<div class="col-md-9"><input type="text" value="{workshop_eb_price}" class='form-control number_format' name="data_workshop[{workshop_num}][early_bird_price]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Harga (Normal)</label>
+											<div class="col-md-9"><input type="text" value="{workshop_price}" class='form-control number_format' name="data_workshop[{workshop_num}][price]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Deskripsi </label>
+											<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_workshop[{workshop_num}][description]">{workshop_desc}</textarea></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Image</label>
+											<div class="col-md-9">{workshop_image}</div>
+							      		</div>
+							      		<div class="form-group no-margin {invis_del_workshop}">
+											<label class="col-md-3 control-label"></label>
+											<div class="col-md-9">
+												<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+							    	{/event_workshop}
+							    	<span id="workshop_additional_form"></span>
+									<div class="form-group no-margin">
+										<label class="col-md-2 control-label"></label>
+										<div class="col-md-6"><button type="button" id="btnAddWorkshop" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Workshop</button></div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="nav-pills-tab-4">
+									{event_speaker}
+									<hr>
+									<div class="cloneInputDataSpeaker" id="entry2{speaker_num}">
+										<input type="hidden" name="id_ref_event_speaker[{speaker_num}]" value='{id_ref_event_speaker}'>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Nama </label>
+											<div class="col-md-9"><input type="text" value="{speaker_name}" class='form-control' name="data_speaker[{speaker_num}][name]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Topik </label>
+											<div class="col-md-9"><input type="text" value="{speaker_topic}" class='form-control' name="data_speaker[{speaker_num}][topic]"></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Deskripsi </label>
+											<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_speaker[{speaker_num}][description]">{speaker_desc}</textarea></div>
+										</div>
+										<div class="form-group no-margin">
+											<label class="col-md-3 control-label">Image</label>
+											<div class="col-md-9">{speaker_image}</div>
+							      		</div>
+							      		<div class="form-group no-margin {invis_del_speaker}">
+											<label class="col-md-3 control-label"></label>
+											<div class="col-md-9">
+												<a class="del-data-speaker"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+							    	{/event_speaker}
+							    	<span id="speaker_additional_form"></span>
+									<div class="form-group no-margin">
+										<label class="col-md-2 control-label"></label>
+										<div class="col-md-6"><button type="button" id="btnAddSpeaker" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Speaker</button></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{imagemanager_config}
+
+<span id="image_form_template" class="invis">
+	<div class="cloneInputEventImage" style="margin-bottom: 15px;">
+		{template_image}
+		<a class="del-event-image"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i></a>
+	</div>
+</span>
+
+<span id="speaker_form_template" class="invis">
+	<hr>
+	<div class="cloneInputDataSpeaker" id="entry2__NO_IMG_IMAGE">
+		<input type="hidden" name="id_ref_event_speaker[__NO_IMG_IMAGE]" value=''>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Nama </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_speaker[__NO_IMG_IMAGE][name]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Topik </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_speaker[__NO_IMG_IMAGE][topic]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Deskripsi </label>
+			<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_speaker[__NO_IMG_IMAGE][description]"></textarea></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Image</label>
+			<div class="col-md-9">{template_speaker_image}</div>
+			</div>
+			<div class="form-group no-margin">
+			<label class="col-md-3 control-label"></label>
+			<div class="col-md-9">
+				<a class="del-data-speaker"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</span>
+
+<span id="workshop_form_template" class="invis">
+	<hr>
+	<div class="cloneInputDataWorkshop" id="entry2__NO_IMG_IMAGE">
+		<input type="hidden" name="id_ref_event_workshop[__NO_IMG_IMAGE]" value=''>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Nama </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_workshop[__NO_IMG_IMAGE][name]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Maks. Peserta </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_workshop[__NO_IMG_IMAGE][max_participant]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Harga (Early Bird)</label>
+			<div class="col-md-9"><input type="text" value="" class='form-control number_format' name="data_workshop[__NO_IMG_IMAGE][early_bird_price]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Harga (Normal)</label>
+			<div class="col-md-9"><input type="text" value="" class='form-control number_format' name="data_workshop[__NO_IMG_IMAGE][price]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Deskripsi </label>
+			<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_workshop[__NO_IMG_IMAGE][description]"></textarea></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Image</label>
+			<div class="col-md-9">{template_workshop_image}</div>
+			</div>
+			<div class="form-group no-margin">
+			<label class="col-md-3 control-label"></label>
+			<div class="col-md-9">
+				<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</span>
+
+<span id="pricing_form_template" class="invis">
+	<hr>
+	<div class="cloneInputDataPricing" id="entry2__NO_IMG_IMAGE">
+		<input type="hidden" name="id_event_price[__NO_IMG_IMAGE]" value=''>
+		<input type="hidden" name="data_pricing[__NO_IMG_IMAGE][is_early_bird]">
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Nama </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_pricing[__NO_IMG_IMAGE][name]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Deskripsi </label>
+			<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_pricing[__NO_IMG_IMAGE][description]"></textarea></div>
+		</div>
+		<div class="form-group  no-margin">
+			<label class="col-md-3 control-label">Tanggal</label>
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" class='form-control datepicker_custom' name="data_pricing[__NO_IMG_IMAGE][start_date]" placeholder="Dari" readonly>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class='form-control datepicker_custom' name="data_pricing[__NO_IMG_IMAGE][end_date]" placeholder="Sampai" readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Min. Usia </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_pricing[__NO_IMG_IMAGE][min_age]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Maks. Usia </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_pricing[__NO_IMG_IMAGE][max_age]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Harga </label>
+			<div class="col-md-9"><input type="text" value="" class='form-control number_format' name="data_pricing[__NO_IMG_IMAGE][price]"></div>
+		</div>
+		<div class="form-group no-margin">
+			<label class="col-md-3 control-label">Image</label>
+			<div class="col-md-9">{template_pricing_image}</div>
+			</div>
+			<div class="form-group no-margin">
+			<label class="col-md-3 control-label"></label>
+			<div class="col-md-9">
+				<a class="del-data-pricing"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</span>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv29EqZNJKMnja6ypyQz7tfnvsX04TcA8&libraries=places"></script>

@@ -1,0 +1,85 @@
+<script type="text/javascript" id="leng">
+function pagination(){
+	if(function_pagination==0){
+		$(".pagination").empty();
+		$(".pagination").bootpag({
+		   total: {pages},
+		   page: 1,
+		   maxVisible: 5,
+		   firstLastUse: true,
+		   first: 'FIRST',
+		   last: 'LAST'
+		}).on("page", function(event, num){
+			event.preventDefault();
+			var searchKeyword = $("#search-picture").val();
+			$("#list-image-manager").html("Please Wait..");
+			$("#list-image-manager").load('{load}', {'page':num, 'searchPicture' : searchKeyword});
+			console.log(self.ajaxPool);
+			return false;
+		});
+		function_pagination=1;
+	}
+}
+
+function search_filemanager() {
+	var searchKeyword = $('#search-picture').val();
+	$("#list-image-manager").empty().html("Please Wait..");
+	$("#list-image-manager").load('{load}', {'searchPicture': searchKeyword});
+	$(".pagination").empty().html("<i class='fa fa-spinner fa-spin'></i>");
+	$('.pagination').unbind('page');
+}
+$(document).ready(function(event){
+	$('#search-picture').keydown(function (e){
+		if(e.keyCode == 13){
+			search_filemanager();
+			function_pagination=0;
+			return false;
+		}
+	});
+	$('#search_image_manager').click(function (){
+		search_filemanager();
+		function_pagination=0;
+		return false;
+	});
+	$(".del-image").click(function(e){
+		e.preventDefault();
+		var url = "{base_url}apps/home/del_image";
+		var data = $(this).attr("data-id");
+		var x = confirm("Apakah Anda yakin ingin menghapus gambar ini?");
+		if (x == true) {
+			$.post(
+				url,
+				{id : data},
+				function(ret){
+					if (!ret.error) {
+						search_filemanager();
+						function_pagination=0;
+						return false;
+					} else {
+						alert(ret.msg);
+					}
+			});
+		}
+		else{
+			return;
+		}
+	});
+});
+
+pagination();
+document.getElementById("leng").innerHTML = "";
+</script>
+
+
+
+{list_data}
+<div class="img-list"  title='{name}'>
+	<div class='img'><img width="100%" src="{base_url}images/article/small/{name}" data-img="{name}"></div>
+	<div>
+		<span class='img-name'>{title}</span>
+		<i class='fa fa-times-circle-o action-form-icon  icon-del pull-right del-image' data-id="{id}" title='Delete Image'></i>
+		<i class='fa fa-search-plus action-form-icon icon-zoom-in pull-right zoom-image' title='Zoom'></i>
+		<i class='fa fa-circle-o action-form-icon  icon-ok pull-right select-image m-l-0' title='Select Image'></i>
+	</div>
+</div>
+{/list_data}

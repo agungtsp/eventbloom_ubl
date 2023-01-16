@@ -1,0 +1,74 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{judul} Provinsi</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update {disable_edit} tangan" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning tangan" href='{this_controller}'><i class="fa fa-arrow-left"></i> Back</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<div class="col-sm-12 col-lg-9 col-md-12">
+
+						<form action='{this_controller}proses/{id_provinsi}' id='form1'  class="form-horizontal">
+
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Kd_Prov <i class='req'>*</i></label>
+								
+								<div class="col-md-9">
+									<input type="text" value="{kd_prov}" id="kd_prov"  class='form-control' name="kd_prov" data-parsley-required="true">
+								</div>
+							</div>
+
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Kode Provinsi <i class='req'>*</i></label>
+								
+								<div class="col-md-9">
+									<input type="text" value="{kode_provinsi}" id="kode_provinsi" class='form-control' name="kode_provinsi" data-parsley-required="true">
+								</div>
+							</div>
+
+                            <div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Nama Provinsi<i class='req'>*</i></label>
+								
+								<div class="col-md-9">
+									<input type="text" value="{provinsi}" id="title" class='form-control' name="provinsi" data-parsley-required="true">
+								</div>
+							</div>
+
+							<div class="form-group no-margin hidden" id="uri_path_form">
+								<label class="col-md-3 control-label">URL <i class='req'>*</i></label>
+								
+								<div class="col-md-9">
+									<input type="text" value="{uri_path}" id="uri_path" class='form-control' name="uri_path" data-parsley-required="true" >
+								</div>
+							</div>
+
+                        	<div class="form-group  no-margin {enable_edit_status_publish}">
+								<label class="col-md-3 control-label">Status <i class='req'>*</i></label>
+								
+								<div class="col-md-9">
+									<select id="status_publish" class='form-control' name="status_publish" data-parsley-required="true">{list_status_publish}</select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{imagemanager_config}

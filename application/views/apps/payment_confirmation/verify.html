@@ -1,0 +1,84 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">Event : {event_name} | Peserta : {participant_email}</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning" href='{this_controller}'><i class="fa fa-arrow-left"></i> Back</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<div class="col-sm-12 col-lg-9 col-md-12">
+						<form action='{this_controller}proses/{id}' id='form1' class="form-horizontal">
+							<input type="hidden" name="id_event_participant" value="{id_event_participant}">
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Nama Bank <i class='req'>*</i></label>
+								<div class="col-md-9">
+									<select class="form-control" id="id_ref_bank" name="id_ref_bank" data-parsley-required="true" data-parsley-errors-container="#error-id_ref_bank">{list_bank}</select>
+									<span id="error-id_ref_bank"></span>
+								</div>
+							</div>
+							<div class="form-group  no-margin invis" id="bank_description">
+								<label class="col-md-3 control-label"></label>
+								<div class="col-md-9">
+									<div class="well"></div>
+								</div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Nama Pemilik Rekening<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{bank_account_name}" id="bank_account_name" class='form-control' data-parsley-required="true"  name="bank_account_name"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Nomor Rekening <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" class="form-control" name="bank_account_number" id="bank_account_number" value='{bank_account_number}' data-parsley-required="true"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Total Harga (Rp.)<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{total_price}" id="total_price" class='form-control number_format' data-parsley-required="true"  name="total_price" disabled></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Total Bayar (Rp.)<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{total_payment}" id="total_payment" class='form-control number_format' data-parsley-required="true"  name="total_payment"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Tanggal Bayar <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{payment_date}" id="payment_date" class='form-control datepicker' name="payment_date" data-parsley-required="true"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Catatan</label>
+								<div class="col-md-9"><textarea id="note" class='form-control' name="note" rows="5">{note}</textarea> </div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Tanggal Verifikasi <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{verify_date}" id="verify_date" class='form-control datepicker' name="verify_date" data-parsley-required="true"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Catatan (Admin)</label>
+								<div class="col-md-9"><textarea id="verify_note" class='form-control' name="verify_note" rows="5">{verify_note}</textarea> </div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Status <i class='req'>*</i></label>
+								<div class="col-md-9">
+									<select class="form-control" id="id_ref_status_payment" name="id_ref_status_payment" data-parsley-required="true" data-parsley-errors-container="#error-id_ref_status_payment">{list_status_payment}</select>
+									<span id="error-id_ref_status_payment"></span>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

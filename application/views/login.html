@@ -1,0 +1,51 @@
+<!-- begin login -->
+    <div class="login login-with-news-feed">
+        <!-- begin news-feed -->
+        <div class="news-feed">
+            <div class="news-image">
+                <img src="{base_url}template/assets/img/login-bg/bg-8.jpg" data-id="login-cover-image" alt="" />
+            </div>
+        </div>
+        <!-- end news-feed -->
+        <!-- begin right-content -->
+        <div class="right-content">
+        	<!-- begin login-header -->
+			<div class="login-header">
+			    <div class="brand">
+			        {app_name}
+    	            <small>Silahkan Login menggunakan akun Anda untuk pelayanan maksimal dari kami.</small>
+			    </div>
+			    <div class="icon">
+			        <i class="fa fa-sign-in"></i>
+			    </div>
+			</div>
+			<!-- end login-header -->
+			<!-- begin login-content -->
+			<div class="login-content">
+			    <form action="{this_controller}cek_login" method="post" class="margin-bottom-0">
+					<div class="alert alert-danger fade in m-b-15 {error_login_hide}"><b>{error_login}</b></div> 
+					<div class="alert alert-success fade in m-b-15 {success_login_hide}"><b>{success_login}</b></div> 
+					<div class="form-group m-b-20">
+					    <input type="text" name="username" class="form-control input-lg" placeholder="Username">
+					</div>
+					<div class="form-group m-b-20">
+					    <input type="password" name="password" class="form-control input-lg" placeholder="Password">
+					</div>
+					<div class="login-buttons">
+					    <button type="submit" class="btn btn-success btn-block btn-lg">Login</button>
+					</div>
+					<div class="row">
+						<div class="btn m-t-20 col-md-6 text-left">
+							<a href="{this_controller}register">Daftar</a>
+						</div>
+						<div class="btn m-t-20 p-l-0 col-md-6 text-right">
+							<a href="{this_controller}forget_password">Lupa Password ?</a>
+						</div>
+					</div>
+			    </form>
+			</div>
+				<!-- end login-content -->
+		</div>
+	<!-- end right-container -->
+</div>
+<!-- end login -->

@@ -1,0 +1,175 @@
+<section class="hero-area bg-1 text-center overly">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content-block">
+					<h1>EventBloom UBL</h1>
+					<p>Sistem registrasi event online untuk berbagai macam event musik</p>
+					<div class="short-popular-category-list text-center">
+						<h2>Kategori Terpopuler</h2>
+						<ul class="list-inline">
+							{popular_category}
+								<li class="list-inline-item">
+									<a href="{base_url}event/kategori/{uri_path}">{popular_category_name}</a>
+								</li>
+		                  	{/popular_category}
+						</ul>
+					</div>
+					
+				</div>
+				<div class="advance-search">
+          			<form action="{base_url}event" method="get">
+						<div class="row">
+							<div class="col-lg-6 col-md-12">
+								<div class="block d-flex">
+									<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" placeholder="Cari Event" name="judul">
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<div class="block d-flex">
+                  					<select class="form-control  mb-2 mr-sm-2 mb-sm-0" name="kategori">
+										<option value="">Semua Kategori</option>
+										{list_all_category}
+											<option value="{category_uri_path}">{category_name}</option>
+					                  	{/list_all_category}
+									</select>
+									<button class="btn btn-main">Cari Event</button>
+								</div>
+							</div>
+						</div>
+					</form>
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="popular-deals section bg-gray {show_list_featured_event}">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2>Acara Pilihan</h2>
+					<p>Acara yang paling seru, menarik dan banyak peminat.</p>
+				</div>
+			</div>
+		</div>
+		{list_featured_event}
+			<div class="row">
+				{data_featured}
+					<div class="col-sm-12 col-lg-4">
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="thumb-content">
+									{list_image}
+										<a href="{base_url}event/detil/{event_uri_path}">
+											<img class="card-img-top img-fluid" src="{img}" alt="Card image cap">
+										</a>
+									{/list_image}
+								</div>
+								<div class="card-body">
+								    <h4 class="card-title"><a href="{base_url}event/detil/{event_uri_path}">{event_name}</a></h4>
+								    <ul class="list-inline product-meta">
+								    	<li class="list-inline-item">
+								    		<a href="{base_url}event/kategori/{event_category_uri_path}"><i class="fa fa-folder-open-o"></i>{event_category}</a>
+								    	</li>
+								    	<li class="list-inline-item pull-right">
+									    	<a href=""><i class="fa fa-map-marker">&nbsp;</i>{location_name}</a>
+								    	</li>
+								    </ul>
+								    <p class="card-text">{event_desc}</p>
+								    <div class="card-date">
+								    	<a href=""><i class="fa fa-calendar">&nbsp;</i>{event_date}</a>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{/data_featured}
+			</div>
+		{/list_featured_event}
+	</div>
+</section>
+
+<section class="popular-deals section-xs bg-gray {show_list_newest_event}">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2>Acara Terbaru</h2>
+					<p>Acara paling terbaru saat ini yang akan segera terselenggara.</p>
+				</div>
+			</div>
+		</div>
+		{list_newest_event}
+			<div class="row">
+				{data_newest}
+					<div class="col-sm-12 col-lg-4">
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="thumb-content">
+									{list_newest_image}
+										<a href="{base_url}event/detil/{newest_event_uri_path}">
+											<img class="card-img-top img-fluid" src="{img_newest}" alt="Card image cap">
+										</a>
+									{/list_newest_image}
+								</div>
+								<div class="card-body">
+								    <h4 class="card-title"><a href="{base_url}event/detil/{event_uri_path}">{newest_event_name}</a></h4>
+								    <ul class="list-inline product-meta">
+								    	<li class="list-inline-item">
+								    		<a href="{base_url}event/kategori/{newest_event_category_uri_path}"><i class="fa fa-folder-open-o"></i>{newest_event_category}</a>
+								    	</li>
+								    	<li class="list-inline-item pull-right">
+									    	<a href=""><i class="fa fa-map-marker">&nbsp;</i>{newest_location_name}</a>
+								    	</li>
+								    </ul>
+								    <p class="card-text">{newest_event_desc}</p>
+								    <div class="card-date">
+								    	<a href=""><i class="fa fa-calendar">&nbsp;</i>{newest_event_date}</a>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{/data_newest}
+			</div>
+		{/list_newest_event}
+	</div>
+	<div class="view-all-event">
+		<a href="{base_url}event" class="btn btn-primary">Lihat Semua Event</a>
+	</div>
+</section>
+
+<section class=" section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Semua kategori</h2>
+					<p>Pilih kategori berdasarkan minat kamu!</p>
+				</div>
+				{list_all_category_feature}
+					<div class="row">
+						{data_category}
+							<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+								<div class="category-block">
+									<div class="header">
+										<i class="fa fa-folder-open-o icon-bg-{number_icon}"></i> 
+										<a href="{base_url}event/kategori/{category_uri_path}"><h4>{category_name}</h4></a>
+									</div>
+									<div class="category-description">
+										{category_description}
+									</div>
+								</div>
+							</div>
+						{/data_category}
+					</div>
+				{/list_all_category_feature}
+			</div>
+		</div>
+	</div>
+</section>

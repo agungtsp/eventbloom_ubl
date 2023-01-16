@@ -1,0 +1,177 @@
+<!-- begin register -->
+	<div class="register register-with-news-feed">
+	    <!-- begin news-feed -->
+	    <div class="news-feed">
+	        <div class="news-image">
+	        	<img src="{base_url}template/assets/img/login-bg/bg-8.jpg" data-id="login-cover-image" alt="" />
+	        </div>
+	    </div>
+	    <!-- end news-feed -->
+	    <!-- begin right-content -->
+	    <div class="right-content">
+	        <!-- begin register-header -->
+	        <h1 class="register-header">
+	            {app_name}
+	            <small>Daftar akun Anda untuk pelayanan maksimal dari kami.</small>
+	        </h1>
+	        <!-- end register-header -->
+	        <!-- begin register-content -->
+	        <div class="register-content">
+	            <form action="{base_url}apps/login/register_process" method="POST" id="form-register" class="margin-bottom-0">
+					<div class="alert alert-danger fade in m-b-15 {error_login_hide}"><b>{error_login}</b></div> 
+	                <label class="control-label">Daftar sebagai :</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+                    		<label class="radio-inline">
+                    			<input type="radio" name="id_auth_user_grup" value="4" data-parsley-required="true" data-parsley-errors-container="#error-id_auth_user_grup"> Peserta
+                    		</label>
+                    		<label class="radio-inline">
+	                    		<input type="radio" name="id_auth_user_grup" value="5"> Event Organizer
+                    		</label>
+                    		<span id="error-id_auth_user_grup"></span>
+	                    </div>
+	                </div>
+	                <label class="control-label">Nama Lengkap</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Nama Lengkap" id="username" data-parsley-required="true" name="username" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Username</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Username" id="userid" data-parsley-required="true" name="userid" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Email</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="email" class="form-control" placeholder="Email" id="email" data-parsley-required="true" name="email" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Jenis Kelamin</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+                    		<label class="radio-inline">
+                    			<input type="radio" name="gender" value="M" data-parsley-required="true" data-parsley-errors-container="#error-gender"> Laki-laki
+                    		</label>
+                    		<label class="radio-inline">
+	                    		<input type="radio" name="gender" value="F"> Perempuan
+                    		</label>
+                    		<span id="error-gender"></span>
+	                    </div>
+	                </div>
+	                <label class="control-label">Tanggal Lahir</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control datepicker" placeholder="Tanggal Lahir" id="birthdate" data-parsley-required="true" name="birthdate" />
+	                    </div>
+	                </div>
+	                <label class="control-label">No. Telepon</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="No. Telepon" id="phone" data-parsley-required="true" name="phone" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Negara</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <select class="form-control" id="kode_ref_negara" data-parsley-required="true" name="kode_ref_negara" data-live-search="true" />{list_negara}</select>
+	                    </div>
+	                </div>
+	                <div class="indonesia_address hidden">
+	                	<label class="control-label">Provinsi</label>
+		                <div class="row m-b-15">
+		                    <div class="col-md-12">
+		                        <select class="form-control" id="kode_ref_provinsi" name="kode_ref_provinsi" />{list_provinsi}</select>
+		                    </div>
+		                </div>
+	                </div>
+	                <div class="indonesia_address hidden">
+		                <label class="control-label">Kota / Kabupaten</label>
+		                <div class="row m-b-15">
+		                    <div class="col-md-12">
+		                        <select class="form-control" id="kode_ref_kabupaten" name="kode_ref_kabupaten" disabled /></select>
+		                    </div>
+		                </div>
+	                </div>
+	                <div class="indonesia_address hidden">
+		                <label class="control-label">Kecamatan</label>
+		                <div class="row m-b-15">
+		                    <div class="col-md-12">
+		                        <select class="form-control" id="kode_ref_kecamatan" name="kode_ref_kecamatan" disabled /></select>
+		                    </div>
+		                </div>
+	                </div>
+	                <div class="indonesia_address hidden">
+		                <label class="control-label">Kelurahan</label>
+		                <div class="row m-b-15">
+		                    <div class="col-md-12">
+		                        <select class="form-control" id="kode_ref_kelurahan" name="kode_ref_kelurahan" disabled /></select>
+		                    </div>
+		                </div>
+	                </div>
+	                <label class="control-label">Kode Pos</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Kode Pos" id="postal_code" name="postal_code" data-parsley-required="true"/>
+	                    </div>
+	                </div>
+	                <label class="control-label">Alamat</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <textarea class="form-control" placeholder="Alamat" id="address" name="address" rows=5 data-parsley-required="true"></textarea>
+	                    </div>
+	                </div>
+	                <label class="control-label">Password</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="password" class="form-control" placeholder="Password" id="userpass" data-parsley-required="true" name="userpass" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Facebook</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Facebook" id="facebook" name="facebook" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Instagram</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Instagram" id="instagram" name="instagram" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Twitter</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Twitter" id="twitter" name="twitter" />
+	                    </div>
+	                </div>
+	                <label class="control-label">Website</label>
+	                <div class="row m-b-15">
+	                    <div class="col-md-12">
+	                        <input type="text" class="form-control" placeholder="Website" id="website" name="website" />
+	                    </div>
+	                </div>
+	             	<div class="row m-b-15 hidden">
+	                    <div class="col-md-12">
+	            			<div class="g-recaptcha col-sm-12" data-sitekey="6Lf8tToUAAAAAI4i1ki9cTYluTJ3sc-nndkQ3iL4" data-type="visual">
+		                    </div>
+		                </div>
+	                </div>
+	                <div class="clearfix">&nbsp;</div>
+	                <div class="register-buttons">
+	                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="register">Daftar</button>
+	                </div>
+	                <div class="m-t-20 m-b-40 p-b-40">
+	                    Sudah punya akun? klik <a href="{base_url}apps/login">disini</a> untuk login.
+	                </div>
+	            </form>
+	        </div>
+	        <!-- end register-content -->
+	    </div>
+	    <!-- end right-content -->
+	</div>
+	<!-- end register -->   
+<script src='https://www.google.com/recaptcha/api.js?hl=id'></script>
+<style type="text/css">#g-recaptcha-response{display: none !important}</style>

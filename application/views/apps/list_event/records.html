@@ -1,0 +1,18 @@
+{data}
+	<tr>
+		<td class="center">{nomor}</td>
+		<td>{event_category}</td>
+		<td>{event_name}</td>
+		<td>{event_desc}</td>
+		<td>{start_date}</td>
+		<td>{end_date}</td>
+		<td class="{show_nonmember}">{event_status}</td>
+		<td class="center">
+			<a href="{base_url}apps/event/{idx}/participant/add/{idx_event_participant}" title="Daftar Event" class="fa fa-user-plus tangan action-form-icon {show_member}"></a>
+		</td>
+		
+	</tr>
+{/data}
+<tr class="footer">
+	<td colspan="10">{paging}</td>
+</tr>

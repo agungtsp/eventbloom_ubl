@@ -1,0 +1,47 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{judul} Pelanggan</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning" href='{this_controller}'><i class="fa fa-arrow-left"></i> Back</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<div class="col-sm-12 col-lg-9 col-md-12">
+						<form action='{this_controller}proses/{id}' id='form1' class="form-horizontal">
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Nama Lengkap<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{fullname}" id="fullname" class='form-control' data-parsley-required="true"  name="fullname"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Handphone<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{phone}" id="phone" class='form-control' data-parsley-required="true"  name="phone"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Email</label>
+								<div class="col-md-9"><input type="email" value="{email}" id="email" class='form-control'   name="email"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Alamat</label>
+								<div class="col-md-9"><textarea class="form-control" id="address"   name="address">{address}</textarea></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

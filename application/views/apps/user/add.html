@@ -1,0 +1,123 @@
+<h1 class="page-header">{page_name}</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse" data-sortable-id="index-1">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+				</div>
+				<h4 class="panel-title">{judul} Frontend Menu</h4>
+			</div>
+			<div class="panel-body">
+				<div class="col-sm-12 col-lg-12 col-md-12">
+					<div class="row-fluid">
+						<div class="col-sm-12 text-right">
+							<a class="btn btn-primary insert update" id='save'><i class="fa fa-save"></i> {proses}</a>
+							<a class="btn btn-warning" href='{this_controller}'><i class="fa fa-arrow-left"></i> Back</a>
+						</div>
+					</div>
+					<div class="clear-fix">&nbsp;</div>
+					<div class="col-sm-12 col-lg-9 col-md-12">
+						<form action='{this_controller}proses/{id_auth_user}' id='form1' class="form-horizontal">
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">User Group <i class='req'>*</i></label>
+								<div class="col-md-9"><select class="form-control" id="id_auth_user_grup" name="id_auth_user_grup" data-parsley-required="true">{list_user_group}</select></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">User ID<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{userid}" id="userid" class='form-control' data-parsley-required="true"  name="userid"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">User Name<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{username}" id="username" class='form-control' data-parsley-required="true"  name="username"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Jenis Kelamin <i class='req'>*</i></label>
+								<div class="col-md-9">
+									<label class="radio-inline">
+										<input type="radio" data-parsley-required="true" name="gender" id="gender" value='M' data-parsley-errors-container="#error-gender" {checked_male}> Laki - laki
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="gender" id="gender" value='F' {checked_female}> Perempuan
+									</label>
+									<span id="error-gender"></span>
+								</div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Tanggal Lahir <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" class="form-control" name="birthdate" id="birthdate" value='{birthdate}' data-parsley-required="true"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Email<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{email}" id="email" class='form-control' data-parsley-required="true"  name="email"></div>
+							</div><div class="form-group  no-margin">
+								<label class="col-md-3 control-label">No. Telepon<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{phone}" id="phone" class='form-control' data-parsley-required="true"  name="phone"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Negara <i class='req'>*</i></label>
+								<div class="col-md-9"><select class="form-control" id="kode_ref_negara" data-parsley-required="true" name="kode_ref_negara" data-live-search="true" />{list_negara}</select></div>
+							</div>
+							<div class="form-group  no-margin indonesia_address hidden">
+								<label class="col-md-3 control-label">Provinsi</label>
+								<div class="col-md-9"><select class="form-control" id="kode_ref_provinsi" name="kode_ref_provinsi" />{list_provinsi}</select></div>
+							</div>
+							<div class="form-group  no-margin indonesia_address hidden">
+								<label class="col-md-3 control-label">Kota / Kabupaten</label>
+								<div class="col-md-9"><select class="form-control" id="kode_ref_kabupaten" name="kode_ref_kabupaten" disabled /></select></div>
+							</div>
+							<div class="form-group  no-margin indonesia_address hidden">
+								<label class="col-md-3 control-label">Kecamatan</label>
+								<div class="col-md-9"><select class="form-control" id="kode_ref_kecamatan" name="kode_ref_kecamatan" disabled /></select></div>
+							</div>
+							<div class="form-group  no-margin indonesia_address hidden">
+								<label class="col-md-3 control-label">Kelurahan</label>
+								<div class="col-md-9"><select class="form-control" id="kode_ref_kelurahan" name="kode_ref_kelurahan" disabled /></select></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Kode Pos <i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" class="form-control" name="postal_code" id="postal_code" data-parsley-type="number" maxlength='5' value='{postal_code}' data-parsley-required="true"></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Alamat <i class='req'>*</i></label>
+								<div class="col-md-9"><textarea class="form-control" placeholder="Alamat" id="address" name="address" rows=5 data-parsley-required="true">{address}</textarea></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Password</label>
+								<div class="col-md-9">
+									<span id='cpwd' class='{is_edit}'><input type='checkbox' id='chpwd' onclick='change_pwd(this.checked);'> Change Password<br></span>
+									<div class="m-t-10"><input type="password" class="form-control {is_show_pass}"  name="userpass" id="userpass" ></div>
+								</div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Facebook</label>
+								<div class="col-md-9"><input type="text" class="form-control" name="facebook" id="facebook" value='{facebook}'></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Instagram</label>
+								<div class="col-md-9"><input type="text" class="form-control" name="instagram" id="instagram" value='{instagram}'></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Twitter</label>
+								<div class="col-md-9"><input type="text" class="form-control" name="twitter" id="twitter" value='{twitter}'></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Website</label>
+								<div class="col-md-9"><input type="text" class="form-control" name="website" id="website" value='{website}'></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var kode_ref_provinsi  = '{kode_ref_provinsi}';
+	var kode_ref_kabupaten = '{kode_ref_kabupaten}';
+	var kode_ref_kecamatan = '{kode_ref_kecamatan}';
+	var kode_ref_kelurahan = '{kode_ref_kelurahan}';
+</script>

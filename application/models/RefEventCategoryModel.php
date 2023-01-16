@@ -1,0 +1,55 @@
+<?php
+class RefEventCategoryModel extends  CI_Model{
+	var $table = 'ref_event_category';
+	var $tableAs = 'ref_event_category a';
+    function __construct(){
+       parent::__construct();
+	   
+    }
+	function records($where=array(),$isTotal=0){
+		$alias['search_name'] 			= 'a.name';
+	 	query_grid($alias,$isTotal);
+		$this->db->select("*");
+		$this->db->where('a.is_delete',0);
+		$query = $this->db->get_where($this->tableAs,$where);
+
+		if($isTotal==0){
+			$data = $query->result_array();
+		}
+		else{
+			return $query->num_rows();
+		}
+
+		$ttl_row = $this->records($where,1);
+		
+		return ddi_grid($data,$ttl_row);
+	}
+	function insert($data){
+		$this->db->insert($this->table,array_filter($data));
+		return $this->db->insert_id();
+	}
+	function update($data,$id){
+		$where['id'] 			= $id;
+		$this->db->update($this->table,$data,$where);
+		return $id;
+	}
+	function delete($id){
+		$data['is_delete'] = 1;
+		$this->update($data,$id);
+	}
+	function findById($id){
+		$where['a.id'] = $id;
+		$where['is_delete'] = 0;
+		return 	$this->db->get_where($this->table.' a',$where)->row_array();
+	}
+	function findBy($where,$is_single_row=0){
+		$where['a.is_delete'] = 0;
+		$this->db->select("*");
+		if($is_single_row==1){
+			return 	$this->db->get_where($this->tableAs,$where)->row_array();
+		}
+		else{
+			return 	$this->db->get_where($this->tableAs,$where)->result_array();
+		}
+	} 
+ }

@@ -1,0 +1,63 @@
+<h1 class="page-header">Log User Activity</h1>
+<div class="row">
+	<!-- begin col-12 -->
+	<div class="col-md-12">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+			    <div class="panel-heading-btn">
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+				<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+			    </div>
+			    <h4 class="panel-title">{page_name}</h4>
+			</div>
+			<div class="panel-body">
+				<fieldset>
+					<table id="gridData"></table>
+					<div id="pgridData"></div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="detail_log" class="invis" title="Log Detail"><div style='height:500px'><i class="fa fa-spin fa-spinner"></i> Loading..</div></div>
+<script>
+jQuery("#gridData").jqGrid({
+	url						: '{this_controller}index/?q=1',
+	datatype				: "json",
+	height					: 320,
+	colNames				: ['id','','Email','Nama Pengguna','Tanggal Pencatatan','Aktifitas','Alamat IP'],
+	colModel					: [
+									{name:'id_auth_user',index:'id_auth_user',hidden:true},
+									{name:'view',index:'view', width:30,search:false},
+									{name:'userid',index:'email'},
+									{name:'username',index:'nama_depan'},
+									{name:'log_date',index:'log_date'},
+									{name:'activity',index:'activity'},
+									{name:'ip',index:'ip'},
+									],
+	rowNum					: 10,
+	rowList					: [25,50,100],
+	pager						: '#pgridData',
+	sortname					: 'id',
+	viewrecords				: true,
+	sortorder				: "desc",
+	multiselect				: false,
+	rownumbers				:true,
+	autowidth				:true
+});
+jQuery("#gridData").jqGrid('navGrid','#pgridData',{add:false,edit:false,del:false,search:false});
+jQuery("#gridData").jqGrid('filterToolbar');
+function detail(id){
+	jPopup('detail_log',600,630);
+	$.ajax({
+		beforeSend	: function(msg){$('#detail_log').html("<div style='height:500px'>Loading..</div>")},
+		url         : '{base_url}apps/log/detail/'+id,
+		success     : function(msg){$('#detail_log').html(msg);}
+	});
+}
+</script>
+<style>
+	
+	.ui-jqgrid tr.jqgrow td{white-space: inherit !important}
+</style>

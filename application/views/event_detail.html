@@ -1,0 +1,142 @@
+<section class="section section-50 bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="product-details">
+					<h1 class="product-title">{event_name}</h1>
+					<div class="product-meta">
+						<ul class="list-inline">
+							<li class="list-inline-item"><i class="fa fa-user-o"></i> Oleh <a href="">{author_name}</a></li>
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Kategori<a href="{base_url}kategori/{event_category_uri_path}">{event_category}</a></li>
+							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Lokasi<a href="">{location_name}</a></li>
+						</ul>
+					</div>
+					<div id="carouselExampleIndicators" class="product-slider carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							{list_image_icon}
+								<li data-target="#carouselExampleIndicators" data-slide-to="{key}" class="{status}"></li>
+							{/list_image_icon}
+						</ol>
+						<div class="carousel-inner">
+							{list_image}
+								<div class="carousel-item {status}">
+									<img class="d-block w-100" src="{img}" alt="First slide">
+								</div>
+							{/list_image}
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+					<div class="content">
+						<ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi</a>
+							</li>
+							<li class="nav-item {show_speakers_tab}">
+								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Pembicara</a>
+							</li>
+							<li class="nav-item {show_workshops_tab}">
+								<a class="nav-link" id="pills-workshop-tab" data-toggle="pill" href="#pills-workshop" role="tab" aria-controls="pills-workshop" aria-selected="false">Workshop</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Lokasi</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-diskusi-tab" data-toggle="pill" href="#pills-diskusi" role="tab" aria-controls="pills-diskusi" aria-selected="false">Diskusi</a>
+							</li>
+						</ul>
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade" id="pills-diskusi" role="tabpanel" aria-labelledby="pills-diskusi-tab">
+								<div id="fb-root"></div>
+								<script>(function(d, s, id) {
+								  var js, fjs = d.getElementsByTagName(s)[0];
+								  if (d.getElementById(id)) return;
+								  js = d.createElement(s); js.id = id;
+								  js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.2&appId=221043781702202&autoLogAppEvents=1';
+								  fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));</script>
+								<div class="fb-comments" data-href="{current_url}" data-numposts="5" width="100%"></div>
+							</div>
+							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+								<h3 class="tab-title">Deksipsi Event</h3>
+								{event_desc}
+							</div>
+							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+								<h3 class="tab-title">Pembicara Event</h3>
+								{list_speakers}
+									<div class="product-review">
+								  		<div class="media">
+								  			<img src="{speaker_img}" alt="avater">
+								  			<div class="media-body">
+								  				<div class="name">
+								  					<h5>{speaker_name}</h5>
+								  				</div>
+								  				<div class="review-comment">
+								  					<p>
+								  						{speaker_topic}<br>
+								  						{speaker_description}
+								  					</p>
+								  				</div>
+								  			</div>
+								  		</div>
+								  	</div>
+								{/list_speakers}
+							</div>
+							<div class="tab-pane fade" id="pills-workshop" role="tabpanel" aria-labelledby="pills-workshop-tab">
+								<h3 class="tab-title">Workshop Event</h3>
+								{list_workshops}
+									<div class="col-sm-12 col-lg-12">
+										<div class="product-item bg-light">
+											<div class="card">
+												<div class="thumb-content">
+													<img class="card-img-top img-fluid" src="{workshop_img}" alt="Card image cap">
+												</div>
+												<div class="card-body">
+												    <h4 class="card-title">{workshop_name}</h4>
+												    <p class="card-text">{workshop_description}</p>
+												    <ul class="list-inline product-meta">
+												    	<li class="list-inline-item pull-right">
+													    	<a href=""><i class="fa fa-user">&nbsp;</i>Maks. Peserta: {workshop_max_participant}</a>
+												    	</li>
+												    </ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								{/list_workshops}
+							</div>
+							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+								<h3 class="tab-title">Lokasi Event</h3>
+								<p>Nama Lokasi: <br>{location_name}</p>
+								<p>Alamat: <br>{event_address}</p>
+								<iframe style="min-height: 199px; width: 100%;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_d&amp;hl=en&amp;saddr={latitude},{longitude}&amp;z=15&amp;output=embed"></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="sidebar">
+					<div class="widget price text-center hidden">
+						<h4>Harga</h4>
+						<p>Rp {price}</p>
+					</div>
+					<div class="widget coupon text-center">
+						<p>
+							Tertarik Dengan Event Ini?
+						</p>
+						<a href="{base_url}apps/event/{idx_event}/participant/add/" class="btn btn-transparent-white">Daftar Sekarang</a>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>

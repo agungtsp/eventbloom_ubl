@@ -57,7 +57,7 @@ switch ($_SERVER['HTTP_HOST']) {
     case 'dev.eventbloom.com':
         define('ENVIRONMENT', 'staging');
         break;
-    case 'eventbloom.com':
+    case 'agungtsp.com':
         define('ENVIRONMENT', 'production');
         break;
     default:

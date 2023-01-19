@@ -109,7 +109,7 @@ function where($req,$alias = ''){
  *Fungsi untuk convert array data ke format json
  */
 function json($page,$total_pages,$record,$data){
-  if(count($data) > 0){
+  if(@count($data) > 0){
 	  foreach ($data as $v){
 		  $n = 0;
 		  foreach ($v as $k => $val){

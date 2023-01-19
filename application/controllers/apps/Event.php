@@ -85,50 +85,6 @@ class Event extends CI_Controller {
 		$data['hidden_is_private']   = ($data['is_private']=='Y') ? '' : 'hidden';
 		$data['checked_is_featured'] = ($data['is_featured']=='Y') ? 'checked' : '';
 
-		// start workshop
-		$this->load->model('RefEventWorkshopModel');
-		$list_event_workshop = $this->RefEventWorkshopModel->findBy(
-			array(
-				'is_delete' => 0,
-				'id_event'  => $data['id']
-			)
-		);
-
-		$wn = 0;
-		$data['template_workshop_image'] = imagemanager("image_workshop",'',277,150,"___NO_IMG_IMAGE","[__NO_IMG_IMAGE]")['browse'];
-
-		if ($list_event_workshop && $data['id']) {
-			foreach ($list_event_workshop as $key => $value) {
-				$data['event_workshop'][$key]['workshop_num']             = $wn;
-				$data['event_workshop'][$key]['id_ref_event_workshop']    = $value['id'];
-				$data['event_workshop'][$key]['workshop_name']            = $value['name'];
-				$data['event_workshop'][$key]['workshop_desc']            = $value['description'];
-				$data['event_workshop'][$key]['workshop_price']           = number_format($value['price'],0,',','.');
-				$data['event_workshop'][$key]['workshop_eb_price']        = number_format($value['early_bird_price'],0,',','.');
-				$data['event_workshop'][$key]['workshop_max_participant'] = $value['max_participant'];
-				$data['event_workshop'][$key]['invis_del_workshop']       = '';
-			
-				$img_thumb                                      = $value['image'] ? image($value['image'],'small') : '';
-				$imagemanager                                   = imagemanager("image_workshop",$img_thumb,277,150,"_$wn","[$wn]");
-				$data['event_workshop'][$key]['workshop_image'] = $imagemanager['browse'];
-
-				$wn++;
-			}
-		} else {
-			$data['event_workshop'] = array(array(
-				'workshop_num'             => $wn,
-				'workshop_name'            => '',
-				'workshop_desc'            => '',
-				'workshop_price'           => '',
-				'workshop_eb_price'        => '',
-				'workshop_max_participant' => '',
-				'workshop_image'           => imagemanager("image_workshop",'',277,150,"_$wn","[$wn]")['browse'],
-				'id_ref_event_workshop'    => '',
-				'invis_del_workshop'       => 'invis'
-			));
-		}
-		// end workshop
-
 		// start speaker
 		$this->load->model('RefEventSpeakerModel');
 		$list_event_speaker = $this->RefEventSpeakerModel->findBy(
@@ -312,9 +268,6 @@ class Event extends CI_Controller {
 			$data_event_speaker         = $post['data_speaker'];
 			$images_data_event_speaker  = $post['image_speaker'];
 			$ids_ref_event_speaker      = $post['id_ref_event_speaker'];
-			$data_event_workshop        = $post['data_workshop'];
-			$images_data_event_workshop = $post['image_workshop'];
-			$ids_ref_event_workshop     = $post['id_ref_event_workshop'];
 			$data_event_pricing         = $post['data_pricing'];
 			$images_data_event_pricing  = $post['image_pricing'];
 			$ids_event_price            = $post['id_event_price'];
@@ -324,9 +277,6 @@ class Event extends CI_Controller {
 				$post['data_speaker'],
 				$post['image_speaker'],
 				$post['id_ref_event_speaker'],
-				$post['data_workshop'],
-				$post['image_workshop'],
-				$post['id_ref_event_workshop'],
 				$post['data_pricing'],
 				$post['image_pricing'],
 				$post['id_event_price'],
@@ -389,40 +339,6 @@ class Event extends CI_Controller {
 			}
 			/*================= end of event speaker =================*/
 
-			/*================= start of event workshop =================*/
-			$this->load->model('RefEventWorkshopModel');
-
-			if (isset($ids_ref_event_workshop)) {
-				
-				/* delete workshop */
-				$this->RefEventWorkshopModel->multi_delete($idedit,$ids_ref_event_workshop);
-
-				foreach ($data_event_workshop as $key => $workshop) {
-					$workshop['id_event'] = $idedit;
-
-					if (!empty($images_data_event_workshop)) {
-						$workshop['image'] = $images_data_event_workshop[$key];
-					}
-					
-					$workshop['early_bird_price'] = (float)str_replace('.', '', $workshop['early_bird_price']);
-					$workshop['price']            = (float)str_replace('.', '', $workshop['price']);
-
-					if ($ids_ref_event_workshop[$key]) {
-
-						if(!$workshop['image']){
-							unset($workshop['image']);
-						}
-
-						$this->RefEventWorkshopModel->update($workshop,$ids_ref_event_workshop[$key]);
-					} else {
-						if ($workshop['name']) {
-							$this->RefEventWorkshopModel->insert($workshop);
-						}
-					}
-				}
-			}
-			/*================= end of event workshop =================*/
-			
 			/*================= start of event price =================*/
 			$this->load->model('EventPriceModel');
 
@@ -625,50 +541,6 @@ class Event extends CI_Controller {
 					'id'       => 'kode_provinsi',
 				));
 
-				// start workshop
-				$this->load->model('RefEventParticipantWorkshopModel');
-				$list_ep_workshop = $this->RefEventParticipantWorkshopModel->findBy(
-					array(
-						'is_delete'            => 0,
-						'id_event_participant' => $data['id']
-					)
-				);
-
-				$epw = 0;
-				$data['list_template_event_workshop'] = selectlist2(array(
-					'table'    => 'ref_event_workshop',
-					'where'    => "is_delete = 0 AND ".md5field("id_event")."= '$id_event'",
-				));
-
-				if ($list_ep_workshop && $data['id']) {
-					foreach ($list_ep_workshop as $key => $value) {
-						$data['event_workshop'][$key]['workshop_num']        = $epw;
-						$data['event_workshop'][$key]['id_ref_ep_workshop']  = $value['id'];
-
-						$list_event_workshop = selectlist2(array(
-							'table'    => 'ref_event_workshop',
-							'where'    => "is_delete = 0 AND ".md5field('id_event')."= '$id_event'",
-							'selected' => $value['id_ref_event_workshop']
-						));
-						$data['event_workshop'][$key]['list_event_workshop'] = $list_event_workshop;
-						
-						$data['event_workshop'][$key]['workshop_price']      = number_format($value['price'],0,',','.');
-						$data['event_workshop'][$key]['invis_del_workshop']  = '';
-						$data['event_workshop'][$key]['checked_workshop_is_early_bird'] = $value['is_early_bird'] == 'Y' ? 'checked' : '';
-
-						$epw++;
-					}
-				} else {
-					$data['event_workshop'] = array(array(
-						'workshop_num'        => $epw,
-						'id_ref_ep_workshop'  => '',
-						'list_event_workshop' => $data['list_template_event_workshop'],
-						'workshop_price'      => '',
-						'invis_del_workshop'  => 'invis'
-					));
-				}
-				// end workshop
-				
 				load_js('jquery.number.js','assets/js');
 				load_js('participant.js','assets/js/modules/event');
 
@@ -717,13 +589,6 @@ class Event extends CI_Controller {
 				$ret['message']  = validation_errors(' ',' ');
 			}
 			else{
-				$data_ep_workshop    = $post['data_ep_workshop'];
-				$ids_ref_ep_workshop = $post['id_ref_ep_workshop'];
-				unset(
-					$post['data_ep_workshop'],
-					$post['id_ref_ep_workshop']
-				);
-
 				$this->db->trans_start();
 
 				$post['birthdate']   = iso_date_custom_format($post['birthdate'],'Y-m-d');
@@ -746,29 +611,6 @@ class Event extends CI_Controller {
 					$act            = "Insert Participant";
 					$idedit         = $this->EventParticipantModel->insert($post);
 				}
-
-				/*================= start of event participant workshop =================*/
-				$this->load->model('RefEventParticipantWorkshopModel');
-
-				if (isset($ids_ref_ep_workshop)) {
-					
-					/* delete workshop */
-					$this->RefEventParticipantWorkshopModel->multi_delete($idedit,$ids_ref_ep_workshop);
-
-					foreach ($data_ep_workshop as $key => $ep_workshop) {
-						$ep_workshop['id_event_participant'] = $idedit;
-						$ep_workshop['price']                = (float)str_replace('.', '', $ep_workshop['price']);
-
-						if ($ids_ref_ep_workshop[$key]) {
-							$this->RefEventParticipantWorkshopModel->update($ep_workshop,$ids_ref_ep_workshop[$key]);
-						} else {
-							if ($ep_workshop['id_ref_event_workshop']) {
-								$this->RefEventParticipantWorkshopModel->insert($ep_workshop);
-							}
-						}
-					}
-				}
-				/*================= end of event participant workshop =================*/
 
 				detail_log();
 				insert_log($act);
@@ -924,19 +766,6 @@ class Event extends CI_Controller {
 			detail_log();
 			insert_log("Cancel Event Participant");
 		}
-	}
-
-	function workshop_price() {
-		$get = purify($this->input->get());
-		
-		$this->load->model('RefEventWorkshopModel');
-		$data = $this->RefEventWorkshopModel->findBy(
-			md5field('id_event')." = '$get[id_event]' AND id = $get[id_workshop]"
-		,1);
-
-		$price    = ($get['is_early_bird']) ? $data['early_bird_price'] : $data['price'];
-
-		echo json_encode($price); 
 	}
 
 	function payment($id_event,$id_event_participant) {

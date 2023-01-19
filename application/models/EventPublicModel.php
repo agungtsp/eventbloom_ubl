@@ -82,14 +82,4 @@ class EventPublicModel extends  CI_Model{
 			return 	$this->db->get_where("ref_event_speaker",$where)->result_array();
 		}
 	}
-	function find_workshop($where,$is_single_row=0){
-		$this->db->select("name as workshop_name, description as workshop_description, image as workshop_img, max_participant as workshop_max_participant");
-		$this->db->where('is_delete', 0);
-		if($is_single_row==1){
-			return 	$this->db->get_where("ref_event_workshop",$where)->row_array();
-		}
-		else{
-			return 	$this->db->get_where("ref_event_workshop",$where)->result_array();
-		}
-	}
  }

@@ -75,7 +75,7 @@ class Auth_model extends CI_Model
 		redirect($redir);
 	}
 	function auth_pages($where,$total='',$sidx='',$sord='',$mulai='',$end=''){
-	  $mulai = $mulai -1;
+	  $mulai = (int)$mulai -1;
 	  if ($total==1){
 		  $sql	= "SELECT count(*) ttl from auth_user_grup ";//where 1 $where";
 		  $data	= $this->db->query($sql)->row()->ttl;

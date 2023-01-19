@@ -56,7 +56,6 @@ class Kabupaten extends CI_Controller {
 
             $ret['error']   = 0;
             $this->db->trans_complete();
-            autocomplete_provinsi_generate();
         }
 
         echo json_encode($ret);
@@ -122,7 +121,6 @@ class Kabupaten extends CI_Controller {
         auth_delete();
         $id     = $this->input->post('iddel');
         $data   = $this->kabupaten_model->delete($id);
-        autocomplete_provinsi_generate();
         detail_log();
         insert_log("Delete Pages");
     }

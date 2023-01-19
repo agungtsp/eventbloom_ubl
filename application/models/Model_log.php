@@ -2,7 +2,7 @@
 class Model_log extends CI_Model{
     function log($where,$total='',$sidx='',$sord='',$mulai='',$end=''){
 	$this->load->helper('text');
-	$mulai = $mulai -1;
+	$mulai = (int)$mulai -1;
 	if ($total==1){
             $sql= "SELECT count(*) ttl from access_log a, auth_user b
                     where a.id_auth_user = b.id_auth_user

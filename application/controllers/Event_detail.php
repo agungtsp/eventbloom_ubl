@@ -35,13 +35,7 @@ class Event_detail extends CI_Controller {
     	foreach ($data['list_speakers'] as $key => $value) {
     		$data['list_speakers'][$key]['speaker_img'] = image($value['speaker_img'],'large');
     	}
-
-    	$data['list_workshops']   = $this->EventPublicModel->find_workshop(array("id_event" => $data['id_event']));
-    	foreach ($data['list_workshops'] as $key => $value) {
-    		$data['list_workshops'][$key]['workshop_img'] = image($value['workshop_img'],'large');
-    	}
     	
-		$data['show_workshops_tab']  = (count($data['list_workshops']) > 0) ? "" : "hidden";
 		$data['show_speakers_tab']   = (count($data['list_speakers']) > 0) ? "" : "hidden";
 		$data['active_event']        = "active";
 		$data['header_search_event'] = 1;

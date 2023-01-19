@@ -82,7 +82,7 @@ function auth_access($type){
 	$user_sess 	= $CI->session->userdata('ADM_SESS');
 	$id_group 	= $user_sess['admin_id_auth_user_group'];
 	$auth 		= $CI->db->select('c,r,u,d')->get_where('auth_pages a, ref_menu_admin b',"a.id_ref_menu_admin = b.id_ref_menu_admin and controller like '$file/%' and id_auth_user_grup = '$id_group'")->row_array();
-	if(count($auth) == 0){
+	if(@count($auth) == 0){
 	 	$auth 		= $CI->db->select('c,r,u,d')->get_where('auth_pages a, ref_menu_admin b',"a.id_ref_menu_admin = b.id_ref_menu_admin and controller = '$file' and id_auth_user_grup = '$id_group'")->row_array();
 	}
 	return $auth[$type];

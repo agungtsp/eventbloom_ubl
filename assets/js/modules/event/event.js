@@ -76,30 +76,6 @@ $(document).on('click', '.del-data-speaker', function () {
 
 /* End of Event Speaker */
 
-/* Start of Event Workshop */
-
-// multiple add
-var numDataWorkshop 	= $('form .cloneInputDataWorkshop').length;
-$(document).on('click','#btnAddWorkshop',function (){
-	numDataWorkshop++;
-	$('#workshop_additional_form').append($("#workshop_form_template").html().replace(/__NO_IMG_IMAGE/g,numDataWorkshop).replace(/\[0\]/g,'['+numDataWorkshop+']'));
-
-	$('.number_format').number(true, 0,',','.');
-});
-
-
-// multiple delete
-$(document).on('click', '.del-data-workshop', function () {
-	if (confirm("Anda yakin ingin menghapus data ini? Data yang telah dihapus tidak dapat dikembalikan.")){
-		$(this).closest('.cloneInputDataWorkshop').slideUp('slow',function(){
-			$(this).empty();
-		});
-	}
-	return false;
-});
-
-/* End of Event Workshop */
-
 /* Start of Event Pricing */
 
 // multiple add
@@ -127,4 +103,4 @@ $(document).on('click', '.del-data-pricing', function () {
 	return false;
 });
 
-/* End of Event Workshop */
+/* End of Event Pricing */

@@ -94,8 +94,6 @@ class Provinsi extends CI_Controller {
             }
 
             $this->db->trans_complete();
-            autocomplete_provinsi_generate();
-            all_provinsi_generate();
             $this->session->set_flashdata('message', $ret['message']);
             $ret['error'] = 0;
         }
@@ -108,8 +106,6 @@ class Provinsi extends CI_Controller {
         $id = $this->input->post('iddel');
         $this->Provinsi_model->delete($id);
         $this->db->trans_complete();
-        autocomplete_provinsi_generate();
-        all_provinsi_generate();
     }
 
     function records()

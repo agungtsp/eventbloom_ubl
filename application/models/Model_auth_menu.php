@@ -5,7 +5,7 @@ class Model_auth_menu extends  CI_Model{
        parent::__construct();
     }
 	 function get_menu($where,$total='',$sidx='',$sord='',$mulai='',$end=''){
-		$mulai = $mulai -1;
+		$mulai = (int)$mulai - 1;
 		if ($total==1){
 			$sql	= "SELECT count(*) ttl 
 						 FROM ref_menu_admin where id_parents_menu_admin = $this->parent 

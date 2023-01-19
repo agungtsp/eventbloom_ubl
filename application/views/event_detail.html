@@ -41,9 +41,6 @@
 							<li class="nav-item {show_speakers_tab}">
 								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Pembicara</a>
 							</li>
-							<li class="nav-item {show_workshops_tab}">
-								<a class="nav-link" id="pills-workshop-tab" data-toggle="pill" href="#pills-workshop" role="tab" aria-controls="pills-workshop" aria-selected="false">Workshop</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Lokasi</a>
 							</li>
@@ -87,29 +84,6 @@
 								  		</div>
 								  	</div>
 								{/list_speakers}
-							</div>
-							<div class="tab-pane fade" id="pills-workshop" role="tabpanel" aria-labelledby="pills-workshop-tab">
-								<h3 class="tab-title">Workshop Event</h3>
-								{list_workshops}
-									<div class="col-sm-12 col-lg-12">
-										<div class="product-item bg-light">
-											<div class="card">
-												<div class="thumb-content">
-													<img class="card-img-top img-fluid" src="{workshop_img}" alt="Card image cap">
-												</div>
-												<div class="card-body">
-												    <h4 class="card-title">{workshop_name}</h4>
-												    <p class="card-text">{workshop_description}</p>
-												    <ul class="list-inline product-meta">
-												    	<li class="list-inline-item pull-right">
-													    	<a href=""><i class="fa fa-user">&nbsp;</i>Maks. Peserta: {workshop_max_participant}</a>
-												    	</li>
-												    </ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								{/list_workshops}
 							</div>
 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 								<h3 class="tab-title">Lokasi Event</h3>

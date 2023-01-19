@@ -27,7 +27,6 @@
 								<li class=""><a href="#nav-pills-tab-4" data-toggle="tab">Pembicara</a></li>
 								<li class=""><a href="#nav-pills-tab-2" data-toggle="tab">Harga (Early Bird)</a></li>
 								<li class=""><a href="#nav-pills-tab-5" data-toggle="tab">Harga (Normal)</a></li>
-								<li class=""><a href="#nav-pills-tab-3" data-toggle="tab">Workshop</a></li>
 							</ul>
 							<div class="tab-content">
 								<div class="tab-pane fade active in" id="nav-pills-tab-1">
@@ -282,50 +281,6 @@
 										<div class="col-md-6"><button type="button" class="btn btn-primary btnAddPricing" data-is-early-bird='0'><i class="fa fa-plus"></i> Tambah</button></div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="nav-pills-tab-3">
-									{event_workshop}
-									<hr>
-									<div class="cloneInputDataWorkshop" id="entry2{workshop_num}">
-										<input type="hidden" name="id_ref_event_workshop[{workshop_num}]" value='{id_ref_event_workshop}'>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Nama </label>
-											<div class="col-md-9"><input type="text" value="{workshop_name}" class='form-control' name="data_workshop[{workshop_num}][name]"></div>
-										</div>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Maks. Peserta </label>
-											<div class="col-md-9"><input type="text" value="{workshop_max_participant}" class='form-control' name="data_workshop[{workshop_num}][max_participant]"></div>
-										</div>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Harga (Early Bird)</label>
-											<div class="col-md-9"><input type="text" value="{workshop_eb_price}" class='form-control number_format' name="data_workshop[{workshop_num}][early_bird_price]"></div>
-										</div>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Harga (Normal)</label>
-											<div class="col-md-9"><input type="text" value="{workshop_price}" class='form-control number_format' name="data_workshop[{workshop_num}][price]"></div>
-										</div>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Deskripsi </label>
-											<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_workshop[{workshop_num}][description]">{workshop_desc}</textarea></div>
-										</div>
-										<div class="form-group no-margin">
-											<label class="col-md-3 control-label">Image</label>
-											<div class="col-md-9">{workshop_image}</div>
-							      		</div>
-							      		<div class="form-group no-margin {invis_del_workshop}">
-											<label class="col-md-3 control-label"></label>
-											<div class="col-md-9">
-												<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
-												</a>
-											</div>
-										</div>
-									</div>
-							    	{/event_workshop}
-							    	<span id="workshop_additional_form"></span>
-									<div class="form-group no-margin">
-										<label class="col-md-2 control-label"></label>
-										<div class="col-md-6"><button type="button" id="btnAddWorkshop" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Workshop</button></div>
-									</div>
-								</div>
 								<div class="tab-pane fade" id="nav-pills-tab-4">
 									{event_speaker}
 									<hr>
@@ -404,44 +359,6 @@
 			<label class="col-md-3 control-label"></label>
 			<div class="col-md-9">
 				<a class="del-data-speaker"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
-				</a>
-			</div>
-		</div>
-	</div>
-</span>
-
-<span id="workshop_form_template" class="invis">
-	<hr>
-	<div class="cloneInputDataWorkshop" id="entry2__NO_IMG_IMAGE">
-		<input type="hidden" name="id_ref_event_workshop[__NO_IMG_IMAGE]" value=''>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Nama </label>
-			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_workshop[__NO_IMG_IMAGE][name]"></div>
-		</div>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Maks. Peserta </label>
-			<div class="col-md-9"><input type="text" value="" class='form-control' name="data_workshop[__NO_IMG_IMAGE][max_participant]"></div>
-		</div>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Harga (Early Bird)</label>
-			<div class="col-md-9"><input type="text" value="" class='form-control number_format' name="data_workshop[__NO_IMG_IMAGE][early_bird_price]"></div>
-		</div>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Harga (Normal)</label>
-			<div class="col-md-9"><input type="text" value="" class='form-control number_format' name="data_workshop[__NO_IMG_IMAGE][price]"></div>
-		</div>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Deskripsi </label>
-			<div class="col-md-9"><textarea  rows="4" class="form-control" name="data_workshop[__NO_IMG_IMAGE][description]"></textarea></div>
-		</div>
-		<div class="form-group no-margin">
-			<label class="col-md-3 control-label">Image</label>
-			<div class="col-md-9">{template_workshop_image}</div>
-			</div>
-			<div class="form-group no-margin">
-			<label class="col-md-3 control-label"></label>
-			<div class="col-md-9">
-				<a class="del-data-workshop"><i class="fa fa-times-circle" title="Hapus" style='font-size:20px; cursor:pointer;'></i>
 				</a>
 			</div>
 		</div>

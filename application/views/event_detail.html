@@ -44,6 +44,9 @@
 							<li class="nav-item">
 								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Lokasi</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-kuesioner" role="tab" aria-controls="pills-profile" aria-selected="false">Kuesioner</a>
+							</li>
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -76,6 +79,30 @@
 								<p>Nama Lokasi: <br>{location_name}</p>
 								<p>Alamat: <br>{event_address}</p>
 								<iframe style="min-height: 199px; width: 100%;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_d&amp;hl=en&amp;saddr={latitude},{longitude}&amp;z=15&amp;output=embed"></iframe>
+							</div>
+							<div class="tab-pane fade" id="pills-kuesioner" role="tabpanel" aria-labelledby="pills-profile-tab">
+								<h3 class="tab-title">Kuesioner</h3>
+								<div class="border well">
+									Silahkan isi dengan sebenar-benarnya
+								</div>
+								<form class="col-md-12" id="form_questionnaire" method="POST">
+									{list_questionnaire}
+										<div class="form-group">
+											<label>{no}. {name}</label>
+											{question}
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="answer" required id="answer{id_answer}" value="{id_answer}">
+												<label class="form-check-label" for="answer{id_answer}">
+													{answer}
+												</label>
+											</div>
+											{/question}
+										</div>
+									{/list_questionnaire}
+									<div class="col-sm-12 form-questionnaire center">
+										<button type="button" id="btn_process">Kirim</button>
+									  </div>
+								</form>
 							</div>
 						</div>
 					</div>

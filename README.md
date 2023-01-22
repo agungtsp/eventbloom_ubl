@@ -1,12 +1,8 @@
 # eventbloom
 Eventbloom
 
-Superadmin:
-U: superadmin
-P: a
-
-Staf:
-U: staf
+Admin:
+U: admin
 P: a
 
 Member (Event Organizer):
@@ -18,9 +14,5 @@ U: eo2
 P: a
 
 Member (Participant):
-U: agungtrilaksonosp@gmail.com
-P: 123456
-
-Member (Participant):
-U: participant2
+U: member
 P: 123456

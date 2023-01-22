@@ -50,6 +50,23 @@ class Event_detail extends CI_Controller {
 		);
 		$data['price'] = number_format($event_pricing['price'],0,',','.');
 		$data['show_register'] = (in_array(group_id(), array(1, 2, 3, 5))) ? 'hidden' : '';
+
+		$this->load->model("QuestionnaireModel");
+		$this->load->model("QuestionnaireAnswerModel");
+		$this->db->order_by("id", "asc");
+		$data['list_questionnaire']   = $this->QuestionnaireModel->findBy(array());
+		$counter = 1;
+    	foreach ($data['list_questionnaire'] as $key => $value) {
+			$this->db->order_by("id", "asc");
+			$list_answer   = $this->QuestionnaireAnswerModel->findBy(array("id_questionnaire" => $value['id']));
+			$data['list_questionnaire'][$key]["no"] = $counter++;
+			foreach ($list_answer as $key_answer => $value_answer){
+				$data['list_questionnaire'][$key]["question"][] = array(
+					"id_answer" => $value_answer['id'],
+					"answer" => $value_answer['name']
+				);
+			}
+    	}
 		render("event_detail", $data);
     }
 }

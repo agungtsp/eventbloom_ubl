@@ -2565,3 +2565,20 @@ article.single-post p {
 
 
 }
+.form-questionnaire button {
+  font-size: 14px;
+  color: #fff;
+  background: #51c7e2;
+  border: 0;
+  padding: 10px 40px;
+  border-radius: 5px;
+}
+
+#form_questionnaire .form-check{
+  margin-left: 3em;
+}
+.border.well{
+  background-color: rgba(0,0,0,.05);
+  padding: 10px;
+  margin-bottom: 10px;
+}

@@ -60,6 +60,7 @@ $route['apps/event/(:any)/participant/add/(:any)']     = 'apps/event/participant
 $route['apps/event/(:any)/participant/add']            = 'apps/event/participant_add/$1';
 $route['apps/event/(:any)/participant/(:any)/payment'] = 'apps/event/payment/$1/$2';
 $route['apps/event/(:any)/participant']                = 'apps/event/participant/$1';
+$route['apps/event/(:any)/questionnaire']              = 'apps/event/questionnaire/$1';
 // end backend
 
 // start frontend

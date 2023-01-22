@@ -60,7 +60,8 @@ class EventPublicModel extends  CI_Model{
 			d.username as author_name,
 			a.address as event_address,
 			longitude,
-			latitude
+			latitude,
+			max_participant
 		");
 		$this->db->join('ref_event_category b','b.id=a.id_ref_event_category','left');
 		$this->db->join('ref_event_status c','c.id=a.id_ref_event_status','left');

@@ -36,5 +36,7 @@ function clear_form_elements(ele) {
 }
 function swalAlert(text,type) {
   type     = type ? type : 'success';//success//info//warning//error
-  swal('',text,type);
+  swal('',text,type).then(function(){ 
+    location.reload();
+  });
 }

@@ -2,7 +2,7 @@
 /**
  * @file
  * common function
- * @author Agung Trilaksono SP <agung.iskandar@gmail.com>
+ * @author Agung Iskandar <agung.iskandar@gmail.com>
  */
 
 function is_file_exsist($path,$file){
@@ -305,4 +305,14 @@ function paging_event($total_row,$perpage,$uri_path, $uri_segment=3){
 	$paging .= $CI->pagination->create_links();
 	$paging .= '</ul>';
 	return $paging;
+}
+
+function generateRandomString($length = 15) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }

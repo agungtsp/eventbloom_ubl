@@ -725,8 +725,6 @@ class Event extends CI_Controller {
 		$age = calculate_age($birthdate);
 		$this->load->model('EventPriceModel');
 		
-		$this->db->where('min_age <=',$age);
-		$this->db->where('max_age >=',$age);
 		$data_price = $this->EventPriceModel->findBy(md5field('id_event')." = '$id_event'");
 
 		$data['is_early_bird'] = '';
@@ -886,6 +884,62 @@ class Event extends CI_Controller {
 		$description = db_get_one('ref_bank','description',"id=$id_bank");
 		
 		echo json_encode($description);
+	}
+
+	function questionnaire($id_event) {
+		if ($id_event && group_id() != 4) { // not member (peserta)
+			$check_event   = db_get_one('event','name',md5field('id')." = '$id_event'");
+			$id_event_current   = db_get_one('event','id',md5field('id')." = '$id_event'");
+
+			if ($check_event) {
+				$data['idx_event']   = $id_event;
+				$data['event_name']  = $check_event;
+				$this->load->model("QuestionnaireModel");
+				$this->load->model("QuestionnaireAnswerModel");
+				$this->load->model("EventQuestionnaireAnswerModel");
+				$this->db->order_by("id", "asc");
+				$data['list_questionnaire']   = $this->QuestionnaireModel->findBy(array());
+				$counter = 1;
+				foreach ($data['list_questionnaire'] as $key => $value) {
+					$this->db->order_by("id", "asc");
+					$list_answer   = $this->QuestionnaireAnswerModel->findBy(array("id_questionnaire" => $value['id']));
+					$data['list_questionnaire'][$key]["id_questionnaire"] = $value['id'];
+					$data['list_questionnaire'][$key]["no"] = $counter++;
+					foreach ($list_answer as $key_answer => $value_answer){
+						$data['list_questionnaire'][$key]["total_question"][] = array(
+							"label" => $value_answer['name'],
+							"data" => $this->EventQuestionnaireAnswerModel->records(array(
+								"id_event" => $id_event_current, 
+								"id_questionnaire" => $value['id'], 
+								"id_questionnaire_answer" => $value_answer['id']
+							), 1)
+						);
+					}
+					// print_r($this->db->last_query());exit();
+					$data['list_questionnaire'][$key]["total_question"] = json_encode($data['list_questionnaire'][$key]["total_question"]);
+				}
+				$data['list_questionnaire_chart'] = $data['list_questionnaire'];
+				$this->db->group_by("id_input");
+				$data['total_participant'] = $this->EventQuestionnaireAnswerModel->records(array(
+					"id_event" => $id_event_current, 
+				), 1);
+				$this->db->group_by("id_input");
+				$this->db->where("a.user_id_create is null");
+				$data['total_participant_non_member'] = $this->EventQuestionnaireAnswerModel->records(array(
+					"id_event" => $id_event_current, 
+				), 1);
+				$this->db->group_by("a.user_id_create");
+				$this->db->where("a.user_id_create is not null");
+				$data['total_participant_member'] = $this->EventQuestionnaireAnswerModel->records(array(
+					"id_event" => $id_event_current, 
+				), 1);
+				render('apps/event/questionnaire_index',$data,'apps');
+			} else {
+				redirect('apps/event');
+			}
+		} else {
+			redirect('apps/event');
+		}
 	}
 }
 

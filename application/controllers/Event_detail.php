@@ -42,6 +42,14 @@ class Event_detail extends CI_Controller {
 		$data['page_name']           = $data['event_name'];
 		$data['idx_event']           = md5plus($data['id_event']);
 		$data['current_url'] 		 = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$this->load->model('EventPriceModel');
+		$event_pricing = $this->EventPriceModel->findBy(
+			array(
+				'id_event'  => $data['id_event']
+			), 1
+		);
+		$data['price'] = number_format($event_pricing['price'],0,',','.');
+		$data['show_register'] = (in_array(group_id(), array(1, 2, 3, 5))) ? 'hidden' : '';
 		render("event_detail", $data);
     }
 }

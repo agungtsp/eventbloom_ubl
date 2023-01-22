@@ -15,6 +15,7 @@ class EventPublicModel extends  CI_Model{
 			)
     	);
 		$this->db->select("a.id,
+			a.id as id_event, 
 			a.name as event_name, 
 			a.description as event_desc,
 			a.start_date as event_start_date,
@@ -24,6 +25,7 @@ class EventPublicModel extends  CI_Model{
 			location_name as event_location_name,
 			a.image as event_image,
 			a.uri_path as event_uri_path,
+			a.uri_path as event_uri_path_2,
 			b.uri_path as event_category_uri_path
 		");
 		$this->db->join('ref_event_category b','b.id=a.id_ref_event_category','left');

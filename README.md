@@ -9,10 +9,6 @@ Staf:
 U: staf
 P: a
 
-Moderator:
-U: moderator
-P: a
-
 Member (Event Organizer):
 U: eo
 P: a

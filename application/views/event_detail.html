@@ -7,7 +7,7 @@
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-user-o"></i> Oleh <a href="">{author_name}</a></li>
-							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Kategori<a href="{base_url}kategori/{event_category_uri_path}">{event_category}</a></li>
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Kategori<a href="{base_url}event/kategori/{event_category_uri_path}">{event_category}</a></li>
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Lokasi<a href="">{location_name}</a></li>
 						</ul>
 					</div>
@@ -39,33 +39,19 @@
 								<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Deskripsi</a>
 							</li>
 							<li class="nav-item {show_speakers_tab}">
-								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Pembicara</a>
+								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Bintang Tamu</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Lokasi</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" id="pills-diskusi-tab" data-toggle="pill" href="#pills-diskusi" role="tab" aria-controls="pills-diskusi" aria-selected="false">Diskusi</a>
-							</li>
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade" id="pills-diskusi" role="tabpanel" aria-labelledby="pills-diskusi-tab">
-								<div id="fb-root"></div>
-								<script>(function(d, s, id) {
-								  var js, fjs = d.getElementsByTagName(s)[0];
-								  if (d.getElementById(id)) return;
-								  js = d.createElement(s); js.id = id;
-								  js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v3.2&appId=221043781702202&autoLogAppEvents=1';
-								  fjs.parentNode.insertBefore(js, fjs);
-								}(document, 'script', 'facebook-jssdk'));</script>
-								<div class="fb-comments" data-href="{current_url}" data-numposts="5" width="100%"></div>
-							</div>
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 								<h3 class="tab-title">Deksipsi Event</h3>
 								{event_desc}
 							</div>
 							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-								<h3 class="tab-title">Pembicara Event</h3>
+								<h3 class="tab-title">Bintang Tamu</h3>
 								{list_speakers}
 									<div class="product-review">
 								  		<div class="media">
@@ -97,11 +83,11 @@
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar">
-					<div class="widget price text-center hidden">
+					<div class="widget price text-center">
 						<h4>Harga</h4>
 						<p>Rp {price}</p>
 					</div>
-					<div class="widget coupon text-center">
+					<div class="widget coupon text-center {show_register}">
 						<p>
 							Tertarik Dengan Event Ini?
 						</p>

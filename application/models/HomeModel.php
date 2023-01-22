@@ -36,6 +36,7 @@ class HomeModel extends  CI_Model{
 			location_name,
 			a.image as event_image,
 			a.uri_path as event_uri_path,
+			a.uri_path as event_uri_path_2,
 			b.uri_path as event_category_uri_path
 		");
 		$this->db->join('ref_event_category b','b.id=a.id_ref_event_category','left');
@@ -64,6 +65,7 @@ class HomeModel extends  CI_Model{
 			location_name as newest_location_name,
 			a.image as newest_event_image,
 			a.uri_path as newest_event_uri_path,
+			a.uri_path as newest_event_uri_path_2,
 			b.uri_path as newest_event_category_uri_path
 		");
 		$this->db->join('ref_event_category b','b.id=a.id_ref_event_category','left');

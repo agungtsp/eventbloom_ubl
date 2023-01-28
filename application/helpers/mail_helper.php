@@ -51,6 +51,7 @@ function sent_mail($email,$config=null){
 			 $to = is_array($email['to']) ? implode(',',$email[to]) : $email[to];
 			 $ret['message']	= "email terkirim ke $to";
 		 }
+		 log_message('info', "mail: ". json_encode($mail));
 		 return $ret;
 	}
 }

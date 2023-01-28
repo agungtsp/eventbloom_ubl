@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-function sent_mail($email,$config){
+function sent_mail($email,$config=null){
 	 $CI=& get_instance();
 	 if(USE_API_EXPERIAN){
 	 	$CI->load->library('cheetah_library');

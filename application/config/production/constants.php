@@ -113,6 +113,7 @@ define('ELFINDER_PATH_UPLOAD',	dirname(__FILE__)."/../../assets/files/");
 
 define('IS_DEVELOPMENT', 1);
 define('EMAIL_CUSTOMER_SERVICE', '');
+define('ASSET_VERSION', 1);
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

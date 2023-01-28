@@ -62,21 +62,7 @@ class Profile extends CI_Controller {
         $this->form_validation->set_rules('email', '"Email"', 'trim|required'); 
         $this->form_validation->set_rules('gender', '"Jenis Kelamin"', 'trim|required');
         $this->form_validation->set_rules('phone', '"No. Telepon"', 'trim|required'); 
-        $this->form_validation->set_rules('kode_ref_negara', '"Negara"', 'trim|required');
-        $this->form_validation->set_rules('postal_code', '"Kode Pos"', 'trim|required');
 
-        if (strtoupper($post['kode_ref_negara']) == 'ID') {
-            $this->form_validation->set_rules('kode_ref_provinsi', '"Provinsi"', 'trim|required');
-            $this->form_validation->set_rules('kode_ref_kabupaten', '"Kabupaten"', 'trim|required');
-            $this->form_validation->set_rules('kode_ref_kecamatan', '"Kecamatan"', 'trim|required');
-            $this->form_validation->set_rules('kode_ref_kelurahan', '"Kelurahan"', 'trim|required');
-        } else {
-			$post['kode_ref_provinsi']  = NULL;
-			$post['kode_ref_kabupaten'] = NULL;
-			$post['kode_ref_kecamatan'] = NULL;
-			$post['kode_ref_kelurahan'] = NULL;
-        }
-		
 		unset ($post['id_auth_user']);
 		
 		$cek_email = $this->db->get_where('auth_user', "id_auth_user != '$id' and email = '$email'")->num_rows();

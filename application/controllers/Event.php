@@ -14,8 +14,8 @@ class Event extends CI_Controller {
             $category = $get['kategori'];
         }
         if(isset($get['judul'])){
-            $where['LOWER(a.name) like']        = "%".strtolower($get['judul'])."%";
-            $where['LOWER(a.description) like'] = "%".strtolower($get['judul'])."%";
+            $this->db->or_like('LOWER(a.name)', strtolower($get['judul']));
+            $this->db->or_like('LOWER(a.description)', strtolower($get['judul']));
             $is_search_event                    = 1;
             $is_search_event_by_name            = 1;
             $data['search_event_name']          = $get['judul'];

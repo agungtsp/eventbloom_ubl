@@ -115,20 +115,6 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('id_auth_user_grup', '"User Group"', 'required'); 
 		$this->form_validation->set_rules('gender', '"Jenis Kelamin"', 'trim|required');
 		$this->form_validation->set_rules('birthdate', '"Tanggal Lahir"', 'trim|required');
-		$this->form_validation->set_rules('kode_ref_negara', '"Negara"', 'trim|required');
-		$this->form_validation->set_rules('postal_code', '"Kode Pos"', 'trim|required');
-
-		if (strtoupper($post['kode_ref_negara']) == 'ID') {
-			$this->form_validation->set_rules('kode_ref_provinsi', '"Provinsi"', 'trim|required');
-			$this->form_validation->set_rules('kode_ref_kabupaten', '"Kabupaten"', 'trim|required');
-			$this->form_validation->set_rules('kode_ref_kecamatan', '"Kecamatan"', 'trim|required');
-			$this->form_validation->set_rules('kode_ref_kelurahan', '"Kelurahan"', 'trim|required');
-		} else {
-			$post['kode_ref_provinsi']  = NULL;
-			$post['kode_ref_kabupaten'] = NULL;
-			$post['kode_ref_kecamatan'] = NULL;
-			$post['kode_ref_kelurahan'] = NULL;
-		}
 
 		if ($this->form_validation->run() == FALSE){
 			$ret['message']  = validation_errors(' ',' ');

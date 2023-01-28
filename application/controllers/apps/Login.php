@@ -106,23 +106,7 @@ class Login extends CI_Controller {
                 $this->form_validation->set_rules('birthdate', '"Tanggal Lahir"', 'trim|required');
                 $this->form_validation->set_rules('phone', '"No. Telepon"', 'trim|required'); 
                 $this->form_validation->set_rules('userpass', '"Password"', 'trim|required'); 
-                $this->form_validation->set_rules('kode_ref_negara', '"Negara"', 'trim|required');
                 $this->form_validation->set_rules('id_auth_user_grup', '"Grup Pengguna"', 'trim|required');
-                $this->form_validation->set_rules('postal_code', '"Kode Pos"', 'trim|required');
-
-                if (strtoupper($post['kode_ref_negara']) == 'ID') {
-                    $this->form_validation->set_rules('kode_ref_provinsi', '"Provinsi"', 'trim|required');
-                    $this->form_validation->set_rules('kode_ref_kabupaten', '"Kabupaten"', 'trim|required');
-                    $this->form_validation->set_rules('kode_ref_kecamatan', '"Kecamatan"', 'trim|required');
-                    $this->form_validation->set_rules('kode_ref_kelurahan', '"Kelurahan"', 'trim|required');
-                } else {
-                    unset(
-                        $post['kode_ref_provinsi'],
-                        $post['kode_ref_kabupaten'],
-                        $post['kode_ref_kecamatan'],
-                        $post['kode_ref_kelurahan']
-                    );
-                }
 
                 if ($this->form_validation->run() == FALSE){
                     $data_return['message']  = validation_errors(' ','<br> ');

@@ -45,8 +45,16 @@
 								<div class="col-md-9"><input type="text" class="form-control" name="bank_account_number" id="bank_account_number" value='{bank_account_number}' data-parsley-required="true"></div>
 							</div>
 							<div class="form-group  no-margin">
-								<label class="col-md-3 control-label">Total Harga (Rp.)<i class='req'>*</i></label>
+								<label class="col-md-3 control-label">Harga (Rp.)<i class='req'>*</i></label>
 								<div class="col-md-9"><input type="text" value="{total_price}" id="total_price" class='form-control number_format' data-parsley-required="true"  name="total_price" disabled></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Biaya Layanan 20% (Rp.)<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{service_fee}" id="service_fee" class='form-control number_format' data-parsley-required="true" disabled></div>
+							</div>
+							<div class="form-group  no-margin">
+								<label class="col-md-3 control-label">Harga Akhir (Rp.)<i class='req'>*</i></label>
+								<div class="col-md-9"><input type="text" value="{final_total_price}" id="final_total_price" class='form-control number_format' data-parsley-required="true" disabled></div>
 							</div>
 							<div class="form-group  no-margin hidden">
 								<label class="col-md-3 control-label">Total Bayar (Rp.)<i class='req'>*</i></label>

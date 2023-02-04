@@ -511,8 +511,8 @@ class Event extends CI_Controller {
 				
 				$data['id_event']    = $id_event;
 				$data['id_group']    = group_id();
-				$data['is_editable'] = (strtotime($data_event['start_date']) > time() && $data_event['id_ref_status_payment'] != 2) ? 1 : 0;
-				
+				$data['event_name'] = $data_event['name'];
+				$data['is_editable'] = (time() > strtotime($data_event['start_date']) && $data_event['id_ref_status_payment'] != 2) ? 1 : 0;
 				$data['list_user'] = selectlist2(array(
 					'table'      => 'auth_user',
 					'where'      => "is_delete = 0 AND id_auth_user_grup = 4",
@@ -822,8 +822,7 @@ class Event extends CI_Controller {
 			$this->form_validation->set_rules('id_ref_bank', '"Nama Bank"', 'required'); 
 			$this->form_validation->set_rules('bank_account_name', '"Nama Pemilik Rekening"', 'required'); 
 			$this->form_validation->set_rules('bank_account_number', '"Nomor Rekening"', 'required');
-			$this->form_validation->set_rules('total_price', '"Total Harga"', 'trim|required');
-			$this->form_validation->set_rules('total_payment', '"Total Bayar"', 'trim|required');
+			$this->form_validation->set_rules('total_price', '"Harga"', 'trim|required');
 			$this->form_validation->set_rules('payment_date', '"Tanggal Bayar"', 'trim|required');
 
 			if ($this->form_validation->run() == FALSE){

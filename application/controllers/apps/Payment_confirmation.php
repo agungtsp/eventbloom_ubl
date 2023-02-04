@@ -36,9 +36,13 @@ class Payment_confirmation extends CI_Controller {
 			$data                  = quote_form($data);
 			$data['payment_date']  = iso_date_custom_format($data['payment_date'],'d-m-Y');
 			$data['verify_date']   = iso_date_custom_format($data['verify_date'],'d-m-Y');
-			$data['total_price']   = number_format($data['total_price'],0,',','.');
-			$data['total_payment'] = number_format($data['total_payment'],0,',','.');
 			
+			$total_price = $data['total_price'];
+			$data['total_price']   = number_format($total_price,0,',','.');
+			$data['total_payment'] = number_format($total_price,0,',','.');
+			$data['service_fee'] = number_format($total_price*(20/100),0,',','.');
+			$data['final_total_price'] = number_format($total_price - $total_price*(20/100),0,',','.');
+
 			$data['list_status_payment'] = selectlist2(array(
 				'table'    => 'ref_status_payment',
 				'title'    => 'Semua', 
@@ -64,6 +68,8 @@ class Payment_confirmation extends CI_Controller {
 		foreach ($data['data'] as $key => $value) {
 			$data['data'][$key]['total_price']   = number_format($value['total_price'],0,',','.');
 			$data['data'][$key]['total_payment'] = number_format($value['total_payment'],0,',','.');
+			$data['data'][$key]['service_fee'] = number_format($value['total_payment']*(20/100),0,',','.');
+			$data['data'][$key]['final_total_price'] = number_format($value['total_payment'] - $value['total_payment']*(20/100),0,',','.');
 		}
 		render('apps/payment_confirmation/records',$data,'blank');
 	}	
@@ -75,8 +81,7 @@ class Payment_confirmation extends CI_Controller {
 		$this->form_validation->set_rules('id_ref_bank', '"Nama Bank"', 'required'); 
 		$this->form_validation->set_rules('bank_account_name', '"Nama Pemilik Rekening"', 'required'); 
 		$this->form_validation->set_rules('bank_account_number', '"Nomor Rekening"', 'required');
-		$this->form_validation->set_rules('total_price', '"Total Harga"', 'trim|required');
-		$this->form_validation->set_rules('total_payment', '"Total Bayar"', 'trim|required');
+		$this->form_validation->set_rules('total_price', '"Harga"', 'trim|required');
 		$this->form_validation->set_rules('payment_date', '"Tanggal Bayar"', 'trim|required');
 		$this->form_validation->set_rules('verify_date', '"Tanggal Verifikasi"', 'trim|required');
 		$this->form_validation->set_rules('id_ref_status_payment', '"Status Pembayaran"', 'trim|required');

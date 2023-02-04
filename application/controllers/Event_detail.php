@@ -6,8 +6,8 @@ class Event_detail extends CI_Controller {
     function index($uri_path){
     	$this->load->model("EventPublicModel");
     	$where = array(
-			'a.early_bird_start_date <=' => date('Y-m-d'),
-			'a.early_bird_end_date >=' => date('Y-m-d'),
+			'a.start_date <=' => date('Y-m-d'),
+			'a.end_date >=' => date('Y-m-d'),
 			'a.id_ref_event_status' => 1,
 			'a.uri_path' => $uri_path
 		);
@@ -53,10 +53,9 @@ class Event_detail extends CI_Controller {
 		$this->load->model("EventParticipantPaymentModel");
 		$this->db->where("b.id_event", $data['id_event']);
 		$this->db->where("a.id_ref_status_payment !=", 3);
-		$total_qty_left = $this->EventParticipantPaymentModel->records(array(), 1);
-		$data['show_register'] = (in_array(group_id(), array(1, 2, 3, 5)) || ($total_qty_left >= $data['max_participant'])) ? 'hidden' : '';
-		$data['show_soldout'] = ($total_qty_left >= $data['max_participant']) ? "" : "hidden";
-
+		$total_participant = $this->EventParticipantPaymentModel->records(array(), 1);
+		$data['show_register'] = (in_array(group_id(), array(1, 2, 3, 5)) || ($total_participant >= $data['max_participant'])) ? 'hidden' : '';
+		$data['show_soldout'] = ($total_participant >= $data['max_participant']) ? "" : "hidden";
 		$this->load->model("QuestionnaireModel");
 		$this->load->model("QuestionnaireAnswerModel");
 		$this->db->order_by("id", "asc");
